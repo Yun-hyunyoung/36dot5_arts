@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %> - Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %> - Login</h1>
+    <p>Welcome back <%= title %></p>
+    <form action="/auth/login" method="post">
+      <input type="text" name="email" autofocus placeholder="E-mail" required>
+      <input type="password" name="password" autofocus placeholder="Password" required>
+      <input type="submit" value="Login">
+    </form>
+  </body>
+</html>

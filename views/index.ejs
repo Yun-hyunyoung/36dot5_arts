@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <p>Hello <%= name %>!</p>
+    <span id="link_login"><a href="/auth/login">로그인</a></span>
+    <span id="link_regist"><a href="/auth/regist">회원가입</a></span>
+    <span id="link_logout" hidden><a href="/auth/logout">로그아웃</a></span>
+  <script>
+    window.onload = function() {
+        var aaa = '<%= name %>';
+        var link_login = document.getElementById('link_login');
+        var link_regist = document.getElementById('link_regist');
+        var link_logout = document.getElementById('link_logout');
+        if(aaa === 'Guest'){
+            link_login.removeAttribute('hidden');
+            link_regist.removeAttribute('hidden');
+            link_logout.setAttribute('hidden', '');
+        }else{
+            link_login.setAttribute('hidden', '');
+            link_regist.setAttribute('hidden', '');
+            link_logout.removeAttribute('hidden');
+        }
+    }
+  </script>
+  </body>
+</html>

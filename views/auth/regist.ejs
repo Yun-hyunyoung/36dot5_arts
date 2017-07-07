@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %> - Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %> - Login</h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/auth/regist" method="post">
+      <select name="type">
+        <option value="">목적</option>
+        <option value="buyer">구매자</option>
+        <option value="seller">판매자</option>
+      </select>
+      <input type="text" name="email" autofocus placeholder="E-mail" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="text" name="major" placeholder="Major" required>
+      <input type="submit" value="Regist">
+    </form>
+  </body>
+</html>

@@ -1,104 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
- <link href="stylesheets/style.css" rel="stylesheet">
-    <title><%= title %></title>
+     <link href="stylesheets/style.css" rel="stylesheet">
+  <title><%= title %></title>
 
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand topnav" href="#"><%= title %></a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-                    <li>
-                        <a href="#myModal_login" data-target="#myModal_login" data-toggle="modal">
-                            <span id="link_login">sign in/sign up</span>
-                        </a>
-                    </li>
-                    <li >
-                        <a href="/auth/logout"><span id="link_logout" hidden>logout</span></a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
 
-    <!-- login - Modal -->
-    <div class="modal fade" id="myModal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel">로그인</h4>
-                            </div>
-                            <div class="modal-body">
-                              <section class="container_login">
-                                <section class="login-form">
-                                  <form method="post" action="/auth/login" role="login">
-                                    <input type="email" name="email" placeholder="E-mail" required class="form-control input-lg" />
-                                    <input type="password" name="password" placeholder="Password" required class="form-control input-lg" />
-                                    <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">Sign in</button>
-                                    <div>
-                                      <a href="/auth/regist">Sign up</a> or <a href="#">reset password</a>
-                                    </div>
-                                  </form>
-                                </section>
-                              </section>
-                            </div>
-                    </div>
-            </div>
-    </div>
+    <% include auth/nav.ejs %>
+
+    <% include auth/modal.ejs %>
 
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>Hello <%= name %>!</p>
 
-  <script>
-    window.onload = function() {
-        var aaa = '<%= name %>';
-        var link_login = document.getElementById('link_login');
-        var link_regist = document.getElementById('link_regist');
-        var link_logout = document.getElementById('link_logout');
-        if(aaa === 'Guest'){
-            link_login.removeAttribute('hidden');
-            link_regist.removeAttribute('hidden');
-            link_logout.setAttribute('hidden', '');
-        }else{
-            link_login.setAttribute('hidden', '');
-            link_regist.setAttribute('hidden', '');
-            link_logout.removeAttribute('hidden');
-        }
-    }
-  </script>
-
-
-
+  <% include auth/hidden.ejs %>
   </body>
 </html>

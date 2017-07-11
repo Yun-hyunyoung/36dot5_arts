@@ -30,7 +30,7 @@ router.post('/regist', function (req, res) {
             }
             req.session.email = user.email;
             res.redirect('/');
-        })
+        });
     });
 });
 
@@ -54,7 +54,7 @@ router.post('/login', function (req, res) {
                 res.redirect('/auth/login');
             }
         });
-    })
+    });
 });
 
 router.get('/logout', function (req, res) {

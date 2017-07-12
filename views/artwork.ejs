@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= artwork.title %> - <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>제목 : <%= artwork.title %></h1>
+    <h3>재료 : <%= artwork.material %></h3>
+    <h3>도구 : <%= artwork.medium %></h3>
+    <h3>크기 : <%= artwork.width %> x <%= artwork.height %> x <%= artwork.depth %></h3>
+    <h3>키워드 : <%= artwork.keyword %></h3>
+    <img src='/images/artworks/<%= artwork.image%>'>
+    <h3>설명 : <%= artwork.description %></h3>
+    <h3>가격 : <%= artwork.price %>원</h3>
+    <h3>카테고리 : <%= artwork.category %></h3>
+    <h3>주소 : <%= artwork.address %></h3>
+    <h3>포장 : <%= artwork.packaging %></h3>
+
+  </body>
+</html>

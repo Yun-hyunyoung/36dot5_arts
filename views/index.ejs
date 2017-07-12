@@ -4,10 +4,11 @@
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
      <link href="stylesheets/reset.css" rel="stylesheet">
      		<!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
      <link href="stylesheets/style.css" rel="stylesheet">
+
   <title><%= title %></title>
 
   </head>
@@ -20,11 +21,11 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>Hello <%= name %>!</p>
-<<<<<<< HEAD
+
   <div>
   <% include auth/hidden.ejs %>
 <% include auth/contents.ejs %>
-=======
+
     <span id="link_login"><a href="/auth/login">로그인</a></span>
     <span id="link_regist"><a href="/auth/regist">회원가입</a></span>
     <span id="link_artwork_regist" hidden><a href="/artwork/regist">작품등록</a></span>
@@ -49,6 +50,13 @@
         }
     }
   </script>
->>>>>>> 945791c49a6e4af471ccd739c4779e754f450fa5
+  <script src="http://code.jquery.com/jquery-1.10.2.js">
+  $(window).scroll(function() {
+     if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+       alert('End of Window');
+     }
+});​
+
+</script>
   </body>
 </html>

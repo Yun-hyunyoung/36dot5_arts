@@ -2,21 +2,63 @@
 <html>
   <head>
     <title><%= title %> - Regist</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1>Artwork regist page</h1>
     <p>regist your artworks</p>
     <form action="/artwork/regist" method="post">
-      <select name="type">
-        <option value="">목적</option>
-        <option value="buyer">구매자</option>
-        <option value="seller">판매자</option>
-      </select>
-      <input type="text" name="email" autofocus placeholder="E-mail" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="text" name="major" placeholder="Major" required>
-      <input type="submit" value="Regist">
+      <input type="text" name="title" placeholder="제목" required><br>
+      <select name="material">
+        <option value="">재질</option>
+        <option value="paper">종이</option>
+        <option value="copper">청동</option>
+      </select><br>
+      <input type="text" name="medium" placeholder="도구" required><br>
+      <input type="number" name="width" placeholder="가로" required>
+      <input type="number" name="height" placeholder="세로" required>
+      <input type="number" name="depth" placeholder="높이" required><br>
+      <input type="text" name="keyword" placeholder="태그" required><br>
+
+      <!--이미지 등록-->
+      <input type="file" id="fileInput"><br>
+      <input type="text" id="filePath" name="filePath" hidden>
+
+      <textarea name="description" placeholder="작품 설명" required></textarea><br>
+      <input type="text" name="price" placeholder="가격" required><br>
+      <select name="category">
+        <option value="">카테고리</option>
+        <option value="drawing">그림</option>
+        <option value="sculpture">조각</option>
+      </select><br>
+      <input type="text" name="address" placeholder="주소" required><br>
+      <select name="packaging">
+        <option value="">포장</option>
+        <option value="tube">드로잉 튜브</option>
+        <option value="frame">액자</option>
+      </select><br>
+      <input type="submit" value="등록">
     </form>
+    <script>
+        $('#fileInput').on('change', function () {
+            var formData = new FormData();
+            formData.append('fileInput', this.files[0]);
+
+            $.ajax({
+                type: 'post',
+                url: '/image/upload',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $('#filePath').val(data);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        });
+    </script>
   </body>
 </html>

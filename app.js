@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var auth = require('./routes/auth');
 var artwork = require('./routes/artwork');
+var image = require('./routes/image');
 
 var app = express();
 
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/artwork', artwork);
+app.use('/image', image);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -66,5 +68,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// for load image on html
+app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;

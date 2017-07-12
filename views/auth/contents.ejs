@@ -2,94 +2,37 @@
   <!-- Thumbnails -->
             <section class="thumbnails">
               <div id=1>
-                <a href="image/arts/01.jpg">
-                  <img src="image/arts/01.jpg" alt="" />
-                  <h3>괴물-10000원</h3>
-                </a>
-                <a href="image/arts/02.jpg">
-                  <img src="image/arts/02.jpg" alt="" />
-                  <h3>벽-130000원</h3>
-                </a>
-                <a href="image/arts/01.jpg">
-                  <img src="image/arts/01.jpg" alt="" />
-                  <h3>괴물-10000원</h3>
-                </a>
-                <a href="image/arts/02.jpg">
-                  <img src="image/arts/02.jpg" alt="" />
-                  <h3>벽-130000원</h3>
-                </a>
-                <a href="image/arts/03.jpg">
-                  <img src="image/arts/03.jpg" alt="" />
-                  <h3>축제-20000원</h3>
-                </a>
-                <a href="image/arts/04.jpg">
-                  <img src="image/arts/04.jpg" alt="" />
-                  <h3>흙-5000원</h3>
-                </a>
+                  <a href="image/arts/01.jpg">
+                      <img src="/image/arts/01.jpg" alt="" />
+                      <h3>괴물-10000원</h3>
+                  </a>
+                <%for(var i = 0; i < artworks.length; i+=3) {%>
+                  <a href="artwork/<%=artworks[i]._id%>">
+                  <img src="images/artworks/<%=artworks[i].image%>" alt="" />
+                  <h3><%= artworks[i].title%>-<%= artworks[i].price%></h3>
+                <%} %>
               </div>
               <div id=2>
-                <a href="image/arts/03.jpg">
-                  <img src="image/arts/03.jpg" alt="" />
-                  <h3>축제-20000원</h3>
-                </a>
-                <a href="image/arts/04.jpg">
-                  <img src="image/arts/04.jpg" alt="" />
-                  <h3>흙-5000원</h3>
-                </a>
-                <a href="image/arts/03.jpg">
-                  <img src="image/arts/03.jpg" alt="" />
-                  <h3>축제-20000원</h3>
-                </a>
-                <a href="image/arts/04.jpg">
-                  <img src="image/arts/04.jpg" alt="" />
-                  <h3>흙-5000원</h3>
-                </a>
-                <a href="image/arts/05.jpg">
-                  <img src="image/arts/05.jpg" alt="" />
-                  <h3>밤-23000원</h3>
-                </a>
-                <a href="image/arts/06.jpg">
-                  <img src="image/arts/06.jpg" alt="" />
-                  <h3>꽃-30000원</h3>
-                </a>
-                <a href="image/arts/04.jpg">
-                  <img src="image/arts/04.jpg" alt="" />
-                  <h3>흙-5000원</h3>
-                </a>
-                <a href="image/arts/03.jpg">
-                  <img src="image/arts/03.jpg" alt="" />
-                  <h3>축제-20000원</h3>
-                </a>
-
+                  <a href="image/arts/02.jpg">
+                      <img src="/image/arts/02.jpg" alt="" />
+                      <h3>균열-15000원</h3>
+                  </a>
+                  <%for(var i = 1; i < artworks.length; i+=3) {%>
+                  <a href="artwork/<%=artworks[i]._id%>">
+                    <img src="/images/artworks/<%=artworks[i].image%>" alt="" />
+                  <h3><%= artworks[i].title%>-<%= artworks[i].price%></h3>
+                <%} %>
               </div>
               <div id=3>
-                <a href="image/arts/05.jpg">
-                  <img src="image/arts/05.jpg" alt="" />
-                  <h3>밤-23000원</h3>
+                  <a href="image/arts/03.jpg">
+                    <img src="/image/arts/03.jpg" alt="" />
+                    <h3>환상-20000원</h3>
                 </a>
-                <a href="image/arts/06.jpg">
-                  <img src="image/arts/06.jpg" alt="" />
-                  <h3>꽃-30000원</h3>
-                </a>
-                <a href="image/arts/05.jpg">
-                  <img src="image/arts/05.jpg" alt="" />
-                  <h3>밤-23000원</h3>
-                </a>
-                <a href="image/arts/06.jpg">
-                  <img src="image/arts/06.jpg" alt="" />
-                  <h3>꽃-30000원</h3>
-                  <a href="image/arts/01.jpg">
-                    <img src="image/arts/01.jpg" alt="" />
-                    <h3>괴물-10000원</h3>
-                  </a>
-                  <a href="image/arts/02.jpg">
-                    <img src="image/arts/02.jpg" alt="" />
-                    <h3>벽-130000원</h3>
-                  </a>
-                  <a href="image/arts/01.jpg">
-                    <img src="image/arts/01.jpg" alt="" />
-                    <h3>괴물-10000원</h3>
-                </a>
+                <%for(var i = 2; i < artworks.length; i+=3) {%>
+                  <a href="artwork/<%=artworks[i]._id%>">
+                    <img src="/images/artworks/<%=artworks[i].image%>" alt="" />
+                  <h3><%= artworks[i].title%>-<%= artworks[i].price%></h3>
+                <%} %>
               </div>
             </section>
 

@@ -69,7 +69,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// for load image on html
-app.use(express.static(path.join(__dirname, 'public')));
-
 module.exports = app;

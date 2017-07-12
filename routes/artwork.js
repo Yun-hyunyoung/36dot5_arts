@@ -37,10 +37,19 @@ router.post('/regist', function (req, res) {
             res.redirect('/');
         }
         // move file temp to image
-        var imgPath = artwork.image;
-        fs.rename(imgPath, imgPath.replace('temp', 'image'));
+        var imgPath = 'temp\\' + artwork.image;
+        fs.rename(imgPath, imgPath.replace('temp', 'public/images/artworks'));
         res.redirect('/');
     });
 });
+
+router.get('/:id', function (req, res) {
+    User.findOne({artworks : { $elemMatch: {_id : req.params.id}}}, {artworks : { $elemMatch: {_id : req.params.id}}}, function (err, user) {
+        var artwork = user.artworks[0];
+        console.log(artwork);
+
+        res.render('artwork', {title: '36.5 Arts', artwork: artwork});
+    });
+})
 
 module.exports = router;

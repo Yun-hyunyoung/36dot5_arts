@@ -19,6 +19,7 @@ router.post('/upload', function (req, res) {
         console.log(files);
 
         var path = files.fileInput[0].path;
+        path = path.substr(5, path.length);
         console.log(path);
         res.send(path); // 파일과 예외 처리를 한 뒤 브라우저로 응답해준다.
     });

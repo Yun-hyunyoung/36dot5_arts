@@ -1,36 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+     <link href="stylesheets/reset.css" rel="stylesheet">
+     		<!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
+     <link href="stylesheets/style.css" rel="stylesheet">
+  <title><%= title %></title>
+
   </head>
   <body>
+
+    <% include auth/nav.ejs %>
+
+    <% include auth/modal.ejs %>
+  <div id="main_text">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>Hello <%= name %>!</p>
-    <span id="link_login"><a href="/auth/login">로그인</a></span>
-    <span id="link_regist"><a href="/auth/regist">회원가입</a></span>
-    <span id="link_artwork_regist" hidden><a href="/artwork/regist">작품등록</a></span>
-    <span id="link_logout" hidden><a href="/auth/logout">로그아웃</a></span>
-  <script>
-    window.onload = function() {
-        var aaa = '<%= name %>';
-        var link_login = document.getElementById('link_login');
-        var link_regist = document.getElementById('link_regist');
-        var link_artwork_regist = document.getElementById('link_artwork_regist');
-        var link_logout = document.getElementById('link_logout');
-        if(aaa === 'Guest'){
-            link_login.removeAttribute('hidden');
-            link_regist.removeAttribute('hidden');
-            link_artwork_regist.setAttribute('hidden', '');
-            link_logout.setAttribute('hidden', '');
-        }else{
-            link_login.setAttribute('hidden', '');
-            link_regist.setAttribute('hidden', '');
-            link_artwork_regist.removeAttribute('hidden');
-            link_logout.removeAttribute('hidden');
-        }
-    }
-  </script>
+
+  <div>
+  <% include auth/hidden.ejs %>
+<% include auth/contents.ejs %>
+
   </body>
 </html>

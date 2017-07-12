@@ -20,8 +20,35 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <p>Hello <%= name %>!</p>
+<<<<<<< HEAD
   <div>
   <% include auth/hidden.ejs %>
 <% include auth/contents.ejs %>
+=======
+    <span id="link_login"><a href="/auth/login">로그인</a></span>
+    <span id="link_regist"><a href="/auth/regist">회원가입</a></span>
+    <span id="link_artwork_regist" hidden><a href="/artwork/regist">작품등록</a></span>
+    <span id="link_logout" hidden><a href="/auth/logout">로그아웃</a></span>
+  <script>
+    window.onload = function() {
+        var aaa = '<%= name %>';
+        var link_login = document.getElementById('link_login');
+        var link_regist = document.getElementById('link_regist');
+        var link_artwork_regist = document.getElementById('link_artwork_regist');
+        var link_logout = document.getElementById('link_logout');
+        if(aaa === 'Guest'){
+            link_login.removeAttribute('hidden');
+            link_regist.removeAttribute('hidden');
+            link_artwork_regist.setAttribute('hidden', '');
+            link_logout.setAttribute('hidden', '');
+        }else{
+            link_login.setAttribute('hidden', '');
+            link_regist.setAttribute('hidden', '');
+            link_artwork_regist.removeAttribute('hidden');
+            link_logout.removeAttribute('hidden');
+        }
+    }
+  </script>
+>>>>>>> 945791c49a6e4af471ccd739c4779e754f450fa5
   </body>
 </html>

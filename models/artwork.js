@@ -10,15 +10,15 @@ var artworkSchema = new Schema({
     medium: String,
     width: Number,
     height: Number,
-    Depth: Number,
+    depth: Number,
     keyword: String,
     image: String,
     description: String,
     price: Number,
     category: String,
     address: String,
-    packing: String,
-    sold: Boolean,
+    packaging: String,
+    sold: {type: Boolean, default: 0},
     regist_date: {type: Date, default: Date.now()}
 });
 

@@ -3,66 +3,53 @@
  */
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
+
+var User = require('../models/user');
+var Artwork = require('../models/artwork');
 
 router.get('/regist', function (req, res) {
-    res.render('../artwork/regist', { title: '36.5 Arts' });
+    res.render('artwork/regist', { title: '36.5 Arts' });
 });
 
 router.post('/regist', function (req, res) {
-    hasher({password: req.body.password}, function (err, pass, salt, hash) {
-        var user = new User();
-        user.email = req.body.email;
-        user.password = hash;
-        user.salt = salt;
-        user.type = req.body.type;
-        user.major = req.body.major;
+    var artwork = new Artwork();
+    artwork.title = req.body.title;
+    artwork.material = req.body.material;
+    artwork.medium = req.body.medium;
+    artwork.width = req.body.width;
+    artwork.height = req.body.height;
+    artwork.depth = req.body.depth;
+    artwork.keyword = req.body.keyword;
 
-        user.save(function (err) {
-            if(err){
-                console.log(err);
-                res.redirect('/');
-            }
-            req.session.email = user.email;
+    //image를 File로 모델화 시킬 필요가 있음?
+    artwork.image = req.body.filePath;
+
+    artwork.description = req.body.description;
+    artwork.price = req.body.price;
+    artwork.category = req.body.category;
+    artwork.address = req.body.address;
+    artwork.packaging = req.body.packaging;
+
+    User.findOneAndUpdate({email : req.session.email}, { $push: { artworks : artwork}}, function (err, user) {
+        if(err){
+            console.log(err);
             res.redirect('/');
-        })
+        }
+        // move file temp to image
+        var imgPath = 'temp\\' + artwork.image;
+        fs.rename(imgPath, imgPath.replace('temp', 'public/images/artworks'));
+        res.redirect('/');
     });
 });
 
-router.get('/login', function (req, res) {
-    res.render('login', { title: '36.5 Arts' });
-});
+router.get('/:id', function (req, res) {
+    User.findOne({artworks : { $elemMatch: {_id : req.params.id}}}, {artworks : { $elemMatch: {_id : req.params.id}}}, function (err, user) {
+        var artwork = user.artworks[0];
+        console.log(artwork);
 
-router.post('/login', function (req, res) {
-    var inputEmail = req.body.email;
-
-    User.findOne({email: inputEmail}, function (err, user) {
-        if(err) return res.status(500).send({error: 'database find failure'});
-        if(!user) return res.status(404).send({error: 'user not found'});
-
-        var inputPassword = req.body.password;
-        hasher({password:inputPassword, salt:user.salt}, function (err, pass, salt, hash) {
-            if(hash === user.password){
-                req.session.email = user.email;
-                res.redirect('/');
-            }else{
-                res.redirect('/auth/login');
-            }
-        });
-    })
-});
-
-router.get('/logout', function (req, res) {
-    if(req.session.email){
-        req.session.destroy(function (err) {
-            if(err){
-                console.log(err);
-            }else{
-                res.redirect('/');
-            }
-        })
-    }else{
-        res.redirect('/');
-    }
-});
+        res.render('artwork', {title: '36.5 Arts', artwork: artwork});
+    });
+})
 
 module.exports = router;

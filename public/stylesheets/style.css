@@ -4,6 +4,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+#banner{
+  background-image: url(../image/background.jpg);
+    background-size:cover;
+  height: 45rem;
+}
+
 #detail-wrapper .detail_view{
   display: flex;
   color:rgb(90,90,90);
@@ -91,8 +97,8 @@ font-family: 'Indie Flower', cursive;
 }
 body {
   margin: 0;
-  padding: 50px;
-  background-image: url(../image/background.jpg);
+  padding: 0px;
+  background-color: white;
   background-size:cover;
 
 }
@@ -100,9 +106,9 @@ body {
   padding-top:2rem;
   padding-right: 2rem;
   padding-left: 2rem;
-  max-width:78rem;
-  margin:5rem auto;
-  background-color: rgba(255,255,255,0.2);
+  max-width:98rem;
+  margin:2rem auto;
+  background-color: rgba(200,200,200,0.4);
   border-radius: 1rem;
 }
 #wrapper .thumbnails{
@@ -115,8 +121,8 @@ body {
 }
 #wrapper .thumbnails>div{
   flex-grow: 1;
-  margin-right: 1rem;
-  margin-left: 1rem;
+  margin-right: 2rem;
+  margin-left: 2rem;
 }
 #wrapper .thumbnails img{
   width:100%;
@@ -126,14 +132,15 @@ body {
 }
 
 #wrapper .thumbnails a{
+  text-align: center;
   text-decoration: none;
-  color:rgba(31,31,255,0.5);
+  color:black;
 }
 #wrapper .thumbnails h3{
   margin-top: 1rem;
   margin-bottom: 3rem;
 }
-article,
+/*article,
 aside,
 details,
 figcaption,

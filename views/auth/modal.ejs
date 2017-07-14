@@ -14,7 +14,7 @@
                                 <input type="password" name="password" placeholder="비밀번호" required class="form-control input-lg" />
                                 <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">로그인</button>
                                 <div>
-                                  <a href="#">비밀번호 찾기d</a>
+                                  <a href="#">비밀번호 찾기</a>
                                 </div>
                               </form>
                             </section>
@@ -35,13 +35,9 @@
                           <section class="container_login">
                             <section class="login-form">
                               <form method="post" action="/auth/regist" role="regist">
-                                  <select class="form-control input-lg" name="type">
-                                      <option value="">가입 목적</option>
-                                      <option value="buyer">구매자</option>
-                                      <option value="seller">판매자</option>
-                                  </select>
-                                  <input class="form-control input-lg" type="text" name="email" autofocus placeholder="이메일" required>
+                                  <input class="form-control input-lg" type="email" name="email" autofocus placeholder="이메일" required>
                                   <input class="form-control input-lg" type="password" name="password" placeholder="비밀번호" required>
+                                  <input class="form-control input-lg"  type="text" name="nickname" placeholder="닉네임" required>
                                   <input class="form-control input-lg" type="text" name="major" placeholder="전공" required>
                                   <input class="btn btn-lg btn-primary btn-block" type="submit" value="회원가입">
                               </form>

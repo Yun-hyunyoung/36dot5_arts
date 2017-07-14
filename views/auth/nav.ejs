@@ -10,12 +10,11 @@
                 <span class="icon-bar"></span>
             </button>
             <img src="../image/logo.png" alt="logo" height="50px" width="180px">
-
+            <a class="navbar-brand topnav" href="/"><%= title %></a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <% if(name === 'Guest') {%>
+                <% if(session_email === undefined) {%>
                 <li>
                     <a href="#myModal_regist" data-target="#myModal_regist" data-toggle="modal">
                         <span id="link_regist">회원가입</span>
@@ -28,7 +27,7 @@
                 </li>
                 <%} else {%>
                 <li >
-                    <a href="/auth/regist"><span >작품등록</span></a>
+                    <a href="/artwork/regist"><span >작품등록</span></a>
                 </li>
                 <li >
                     <a href="/auth/logout"><span >로그아웃</span></a>

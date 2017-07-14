@@ -14,13 +14,9 @@ router.get('/', function(req, res, next) {
             }
         }
         console.log(artworks);
-        res.render('index', { title: '36.5 Arts', name: getName(req.session.email), artworks : artworks});
+        console.log(req.session.email);
+        res.render('index', { title: '36.5 Arts', session_email: req.session.email, artworks : artworks});
     });
 });
-
-function getName(email) {
-    if (email === undefined) return 'Guest';
-    else return email;
-}
 
 module.exports = router;

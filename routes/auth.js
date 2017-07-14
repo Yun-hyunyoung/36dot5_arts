@@ -20,7 +20,7 @@ router.post('/regist', function (req, res) {
         user.email = req.body.email;
         user.password = hash;
         user.salt = salt;
-        user.type = req.body.type;
+        user.nickname = req.body.nickname;
         user.major = req.body.major;
 
         user.save(function (err) {

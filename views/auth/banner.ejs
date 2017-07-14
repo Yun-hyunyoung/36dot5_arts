@@ -2,9 +2,13 @@
   <div id = "banner-background">
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <p>Hello <%= name %>!</p>
+    <% if(session_email !== undefined ) {%>%>
+    <p>Hello <%= session_email %>!</p>
+    <%} else {%>
+    <p>Hello Guest!</p>
+    <%}%>
   </div>
   <div>
-    <h1>등록된 작품수 : </h1>
+    <h1>등록된 작품수 : <%= artworks.length %></h1>
   </div>
 </section>

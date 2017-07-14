@@ -8,13 +8,6 @@
   <body>
         <% include auth/nav.ejs %>
 
-        <div id="main_text">
-          <h1>36.5 Arts</h1>
-          <p>Welcome to 36.5 Arts</p>
-          <p>Hello!</p>
-
-        <div>
-
     <div id = "detail-wrapper">
         <section class='detail_view'>
           <div class ="info">
@@ -45,29 +38,20 @@
     </div>
 
     <div id = "detail-wrapper">
-        <h2>ooo님의 다른 작품</h2>
+        <h2>'<%= nickname %>'님의 다른 작품</h2>
         <section class='other-pic'>
+            <%if(other_artworks[0] !== undefined) {%>
+            <%other_artworks.forEach(function (artwork, idx) {%>
           <div class="other-picture">
               <h2> <%= artwork.title %></h2>
-             <img src='/images/artworks/<%= artwork.image%>'>
+             <a href="../artwork/<%=artwork._id%>"><img src='/images/artworks/<%=artwork.image%>'></a>
                <h3>카테고리 : <%= artwork.category %></h3>
                <h3>가격 : <%= artwork.price %>원</h3>
                  <h3>크기 : <%= artwork.width %> x <%= artwork.height %> x <%= artwork.depth %></h3>
           </div>
-          <div class="other-picture">
-              <h2> <%= artwork.title %></h2>
-             <img src='/images/artworks/<%= artwork.image%>'>
-               <h3>카테고리 : <%= artwork.category %></h3>
-               <h3>가격 : <%= artwork.price %>원</h3>
-                 <h3>크기 : <%= artwork.width %> x <%= artwork.height %> x <%= artwork.depth %></h3>
-          </div>
-          <div class="other-picture">
-              <h2> <%= artwork.title %></h2>
-             <img src='/images/artworks/<%= artwork.image%>'>
-               <h3>카테고리 : <%= artwork.category %></h3>
-               <h3>가격 : <%= artwork.price %>원</h3>
-                 <h3>크기 : <%= artwork.width %> x <%= artwork.height %> x <%= artwork.depth %></h3>
-          </div>
+            <%}) } else {%>
+            <div><%=nickname%>님의 다른 작품이 없습니다.</div>
+            <%}%>
         </section>
       </div>
   </body>

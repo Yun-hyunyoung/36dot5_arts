@@ -1,10 +1,13 @@
 <section id = "banner">
   <div id = "banner-background">
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>Hello <%= name %>!</p>
+    <div class="banner-text">
+      <h1><%= title %></h1>
+      <p>Welcome to <%= title %></p>
+      <p>Hello <%= name %>!</p>
+    </div>
+
   </div>
-  <div>
-    <h1>등록된 작품수 : </h1>
+  <div class="count">
+    <h3>등록된 작품수 : <%= artworks.length %> 개 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 거래된 작품수 : 0개</h3>
   </div>
 </section>

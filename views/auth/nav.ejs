@@ -14,26 +14,25 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <% if(name === 'Guest') {%>
                 <li>
-                    <a href="#about">About</a>
-                </li>
-                <li>
-                    <a href="#services">Services</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
+                    <a href="#myModal_regist" data-target="#myModal_regist" data-toggle="modal">
+                        <span id="link_regist">회원가입</span>
+                    </a>
                 </li>
                 <li>
                     <a href="#myModal_login" data-target="#myModal_login" data-toggle="modal">
-                        <span id="link_login">sign in/sign up</span>
+                        <span id="link_login">로그인</span>
                     </a>
                 </li>
+                <%} else {%>
                 <li >
-                    <a href="/auth/logout"><span id="link_logout" hidden>logout</span></a>
+                    <a href="/auth/regist"><span >작품등록</span></a>
                 </li>
                 <li >
-                    <a href="#"><span id="regist_button">작품등록</span></a>
+                    <a href="/auth/logout"><span >로그아웃</span></a>
                 </li>
+                <%}%>
             </ul>
         </div>
         <!-- /.navbar-collapse -->

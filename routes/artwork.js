@@ -48,7 +48,7 @@ router.get('/:id', function (req, res) {
         var artwork = user.artworks[0];
         console.log(artwork);
 
-        res.render('artwork', {title: '36.5 Arts', artwork: artwork});
+        res.render('artwork', {title: '36.5 Arts', artwork: artwork, session_email: req.session.email});
     });
 })
 

@@ -26,7 +26,7 @@ var userSchema = new Schema({
     email: String,
     password: String,
     salt: String,
-    type: String,
+    nickname: String,
     major: String,
     artworks: [artworkSchema],
     created_date: {type: Date, default: Date.now()}

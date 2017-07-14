@@ -4,11 +4,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-#banner{
-  background-image: url(../image/background.jpg);
-    background-size:cover;
-  height: 45rem;
-}
 
 #detail-wrapper .detail_view{
   display: flex;
@@ -140,6 +135,25 @@ body {
   margin-top: 1rem;
   margin-bottom: 3rem;
 }
+
+#contents_text h1{
+  color: black;
+
+}
+#contents_text{
+  text-align: center;
+}
+
+#banner-background{
+  background-image: url(../image/background.jpg);
+    background-size:cover;
+  height: 50rem;
+}
+#banner h1{
+  color: black;
+  padding-bottom: 1rem;
+}
+
 /*article,
 aside,
 details,

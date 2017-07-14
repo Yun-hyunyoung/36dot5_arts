@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
         }
         console.log(artworks);
         console.log(req.session.email);
-        res.render('index', { title: '36.5 Arts', session_email: req.session.email, artworks : artworks});
+        res.render('index', { title: '36.5 Arts', nickname: users.nickname, session_email: req.session.email, artworks : artworks});
     });
 });
 

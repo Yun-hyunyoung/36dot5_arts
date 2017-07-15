@@ -27,7 +27,7 @@
                         <%if(idx/4==0){ %><%=' active'%><%}%>">
                         <div class="row">
                     <%}%>
-                            <div class="col-md-3"><a href="artwork/<%=artwork._id%>" class="thumbnail"><img class="img-responsive" src="images/artworks/<%=artwork.image%>" alt="Thumb<%=i+1%>"></a>
+                            <div class="col-md-3"><a href="artwork/<%=artwork._id%>" class="thumbnail"><img class="img-responsive" src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>"></a>
                                 <div><%=artwork.title%>(<%=artwork.material%>/<%=artwork.medium%>)</div>
                                 <div><%=artwork.width%>X<%=artwork.height%>X<%=artwork.depth%></div>
                                 <div><%=artwork.price%>원</div>

@@ -3,41 +3,57 @@
   <head>
     <title><%= title %> - Regist</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+  <% include ../auth/nav.ejs %>
+
     <h1>Artwork regist page</h1>
     <p>regist your artworks</p>
     <form action="/artwork/regist" method="post">
-      <input type="text" name="title" placeholder="제목" required><br>
-      <select name="material">
+       <label for="usr">작품명:</label>
+      <input type="text" name="title" placeholder="제목" required  class="form-control" ><br>
+       <label for="usr">재질:</label>
+      <select  class="btn btn-primary dropdown-toggle" name="material" class="form-control" >
         <option value="">재질</option>
         <option value="paper">종이</option>
         <option value="copper">청동</option>
       </select><br>
-      <input type="text" name="medium" placeholder="도구" required><br>
-      <input type="number" name="width" placeholder="가로" required>
-      <input type="number" name="height" placeholder="세로" required>
-      <input type="number" name="depth" placeholder="높이" required><br>
-      <input type="text" name="keyword" placeholder="태그" required><br>
-
-      <!--이미지 등록-->
-      <input type="file" id="fileInput"><br>
-      <input type="text" id="filePath" name="filePath" hidden>
-
-      <textarea name="description" placeholder="작품 설명" required></textarea><br>
-      <input type="text" name="price" placeholder="가격" required><br>
-      <select name="category">
+      <label for="usr">도구:</label>
+      <input type="text" name="medium" placeholder="도구" required class="form-control"><br>
+          <label >크기:</label>
+      <div><input type="number" name="width" placeholder="가로" required class="form-control">x
+      <input type="number" name="height" placeholder="세로" required class="form-control">x
+      <input type="number" name="depth" placeholder="높이" required class="form-control"><br>
+</div>
+  <label for="usr">태그:</label>
+      <input type="text" name="keyword" placeholder="태그" required class="form-control"><br>
+        <label for="usr">작품설명:</label><br>
+      <textarea name="description" placeholder="작품 설명" required class="form-control"> </textarea><br>
+      <label for="usr">카테고리:</label>
+      <select name="category" class="btn btn-primary dropdown-toggle">
         <option value="">카테고리</option>
         <option value="drawing">그림</option>
         <option value="sculpture">조각</option>
       </select><br>
-      <input type="text" name="address" placeholder="주소" required><br>
-      <select name="packaging">
-        <option value="">포장</option>
+        <label for="usr">주소:</label>
+      <input type="text" name="address" placeholder="주소" required class="form-control"><br>
+        <label for="usr">포장방법:</label>
+      <select name="packaging" class="btn btn-primary dropdown-toggle">
+        <option value="">포장방법</option>
         <option value="tube">드로잉 튜브</option>
         <option value="frame">액자</option>
       </select><br>
+            <!--이미지 등록-->
+      <label for="usr">사진등록:</label>
+    <input type="file" id="fileInput"><br>
+    <input type="text" id="filePath" name="filePath" hidden>
+      <label for="usr">가격:</label>
+        <input type="text" name="price" placeholder="가격" required class="form-control"><br>
+        <p>*택배비 책정하여 적어라!<br> *보여지는가격 = 입력가격 + 수수료 20%</p>
       <input type="submit" value="등록">
     </form>
     <script>
@@ -62,3 +78,12 @@
     </script>
   </body>
 </html>
+
+<style >
+  form{
+    text-align: left;
+    border: 1px solid black;
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+</style>

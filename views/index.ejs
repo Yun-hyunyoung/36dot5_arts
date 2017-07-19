@@ -9,8 +9,9 @@
      		<!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
      <link href="stylesheets/style.css" rel="stylesheet">
 
-<link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
   <title><%= title %></title>
+    <% include auth/favicon.ejs %>
 
   </head>
   <body>
@@ -20,9 +21,6 @@
 
   <div id="main_text">
   <% include auth/contents.ejs %>
-</div>
-
-
-
+  </div>
   </body>
 </html>

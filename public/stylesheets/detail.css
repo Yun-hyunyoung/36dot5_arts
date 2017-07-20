@@ -93,7 +93,9 @@ tr{
   background:
   background-size: cover;
 }
-
+.other-pic{
+  display: flex;
+}
 
 @media(max-width:580px){
 #detail-info{

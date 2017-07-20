@@ -9,7 +9,7 @@ var index = require('./routes/index');
 var auth = require('./routes/auth');
 var artwork = require('./routes/artwork');
 var image = require('./routes/image');
-
+var email = require('./routes/sendemail');
 var app = express();
 
 // express-session setup
@@ -45,7 +45,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/email',email);
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/artwork', artwork);

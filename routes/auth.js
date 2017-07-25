@@ -50,8 +50,8 @@ router.post('/login', function (req, res) {
                 req.session.email = user.email;
                 res.redirect('/');
             }else{
-                res.redirect('/auth/login');
-            }
+              res.render('/auth/login')
+              }
         });
     });
 });

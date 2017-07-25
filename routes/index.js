@@ -18,5 +18,11 @@ router.get('/', function(req, res, next) {
         res.render('index', { title: '36.5 Arts', nickname: users.nickname, session_email: req.session.email, artworks : artworks});
     });
 });
+router.get('/clause',function(req, res){
+  res.render('clause');
+});
+router.get('/introduce',function(req, res){
+  res.render('introduce');
+});
 
 module.exports = router;

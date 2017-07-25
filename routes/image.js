@@ -9,7 +9,7 @@ var multiparty = require('multiparty');
 router.post('/upload', function (req, res) {
     var form = new multiparty.Form({
         autoFiles: false,
-        uploadDir: 'temp/',
+        uploadDir: 'public/images/temp/',
         maxFilesSize: 1024 * 1024 * 5 // 허용 파일 사이즈 최대치
     });
 
@@ -20,7 +20,7 @@ router.post('/upload', function (req, res) {
 		console.log(file);
         if(file !== undefined){
             var path = file[0].path;
-            path = path.substr(5, path.length);
+            path = path.substr(19, path.length);
             console.log(path);
             res.send(path); // 파일과 예외 처리를 한 뒤 브라우저로 응답해준다.
         }else{

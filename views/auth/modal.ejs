@@ -2,31 +2,31 @@
 
 <!-- login - Modal -->
 <div class="modal fade" id="myModal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">로그인</h4>
-      </div>
-      <div class="modal-body">
-        <section class="container_login">
-          <section class="login-form">
-            <form method="post" action="/auth/login" role="login">
-              <input type="email" name="email" placeholder="이메일" required class="form-control input-lg" />
-              <hr>
-              <input type="password" name="password" placeholder="비밀번호" required class="form-control input-lg" />
-              <hr>
-              <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">로그인</button>
-              <div>
-                <a href="#">비밀번호 찾기</a>
-              </div>
-            </form>
-          </section>
-        </section>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title" id="myModalLabel">로그인</h4>
+                        </div>
+                        <div class="modal-body">
+                          <section class="container_login">
+                            <section class="login-form">
+                                <div id="authValidCheck"></div>
+                              <form action="/auth/login" method="post" role="login">
+                                <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
+                                <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
+                                <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
+                                <div>
+                                  <a href="#">비밀번호 찾기</a>
+                                </div>
+                              </form>
+                            </section>
+                          </section>
+                        </div>
+                </div>
+        </div>
+</div>  
+
 <!-- regist - Modal -->
 <div class="modal fade" id="myModal_regist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

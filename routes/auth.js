@@ -41,17 +41,17 @@ router.post('/login', function (req, res) {
     var inputEmail = req.body.email;
 
     User.findOne({email: inputEmail}, function (err, user) {
-        if(err) return res.status(500).send({error: 'database find failure'});
-        if(!user) return res.status(404).send({error: 'user not found'});
+        if(err) return res.send({error: 'dbNotFound'});
+        if(!user) return res.send({error: 'userNotFound'});
 
         var inputPassword = req.body.password;
         hasher({password:inputPassword, salt:user.salt}, function (err, pass, salt, hash) {
             if(hash === user.password){
                 req.session.email = user.email;
-                res.redirect('/');
+                res.send({success: 1})
             }else{
-              res.render('/auth/login')
-              }
+                res.send({error: 'failedLogin'});
+            }
         });
     });
 });

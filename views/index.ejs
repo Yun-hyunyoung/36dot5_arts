@@ -22,5 +22,31 @@
   <div id="main_text">
   <% include auth/contents.ejs %>
   </div>
+
+  <script>
+        $('#btn-login').on('click', function (e) {
+            $('#authValidCheck').html('');
+            e.preventDefault();
+           $.ajax({
+               type: 'post',
+               url: '/auth/login',
+               data: {
+                        email: $('#login-email').val(),
+                        password: $('#login-password').val()
+               },
+               success: function (data) {
+                    if(data.error === 'failedLogin' || data.error === 'userNotFound'){
+                        $('#authValidCheck').html('<span class="label label-danger">로그인 정보를 확인해주세요.</span>');
+                    } else if(data.success === 1){
+                        location.href = '/';
+                    }
+               },
+               error: function (x, err) {
+                    console.log(x);
+                    console.log(err);
+               }
+           });
+        });
+  </script>
   </body>
 </html>

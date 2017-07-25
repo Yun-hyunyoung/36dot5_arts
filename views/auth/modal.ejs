@@ -9,10 +9,11 @@
                         <div class="modal-body">
                           <section class="container_login">
                             <section class="login-form">
-                              <form method="post" action="/auth/login" role="login">
-                                <input type="email" name="email" placeholder="이메일" required class="form-control input-lg" />
-                                <input type="password" name="password" placeholder="비밀번호" required class="form-control input-lg" />
-                                <button type="submit" value="Login" class="btn btn-lg btn-primary btn-block">로그인</button>
+                                <div id="authValidCheck"></div>
+                              <form action="/auth/login" method="post" role="login">
+                                <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
+                                <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
+                                <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
                                 <div>
                                   <a href="#">비밀번호 찾기</a>
                                 </div>

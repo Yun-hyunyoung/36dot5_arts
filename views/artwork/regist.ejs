@@ -6,40 +6,167 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+  <% include ../auth/nav.ejs %>
     <h1>Artwork regist page</h1>
     <p>regist your artworks</p>
-    <form action="/artwork/regist" method="post">
-      <input type="text" name="title" placeholder="제목" required><br>
-      <select name="material">
-        <option value="">재질</option>
-        <option value="paper">종이</option>
-        <option value="copper">청동</option>
-      </select><br>
-      <input type="text" name="medium" placeholder="도구" required><br>
-      <input type="number" name="width" placeholder="가로" required>
-      <input type="number" name="height" placeholder="세로" required>
-      <input type="number" name="depth" placeholder="높이" required><br>
-      <input type="text" name="keyword" placeholder="태그" required><br>
+  <div class="container-fluid">
+    <form action="/artwork/regist" method="post" class="form-horizontal">
 
-      <!--이미지 등록-->
-      <input type="file" id="fileInput"><br>
-      <input type="text" id="filePath" name="filePath" hidden>
+      <div class="thumbnail">
+        <img src="" alt="" id="img-thumbnail" class="img-thumbnail center-block" style="width: 320px; height: 320px;">
+      </div>
 
-      <textarea name="description" placeholder="작품 설명" required></textarea><br>
-      <input type="text" name="price" placeholder="가격" required><br>
-      <select name="category">
-        <option value="">카테고리</option>
-        <option value="drawing">그림</option>
-        <option value="sculpture">조각</option>
-      </select><br>
-      <input type="text" name="address" placeholder="주소" required><br>
-      <select name="packaging">
-        <option value="">포장</option>
-        <option value="tube">드로잉 튜브</option>
-        <option value="frame">액자</option>
-      </select><br>
-      <input type="submit" value="등록">
+      <div class="form-group text-center">
+        <div class="filebox">
+          <!--이미지 등록-->
+          <label for="fileInput">업로드</label>
+          <input type="file" id="fileInput" class="form-control">
+          <input type="text" id="filePath" name="filePath" hidden>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">제목</label>
+        <div class="col-sm-10">
+          <input type="text" name="title" placeholder="제목" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">재료</label>
+        <div class="col-sm-10">
+          <select name="material" class="form-control">
+            <option value="paper">종이</option>
+            <option value="canvas">캔버스</option>
+            <option value="copper">청동</option>
+            <option value="aluminium">알루미늄</option>
+            <option value="other">기타</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">도구</label>
+        <div class="col-sm-10">
+          <input type="text" name="medium" placeholder="도구" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">크기</label>
+        <div class="col-sm-3">
+          <input type="text" name="width" placeholder="가로" class="form-control" required>
+        </div>
+        <div class="col-sm-3">
+          <input type="text" name="height" placeholder="세로" class="form-control" required>
+        </div>
+        <div class="col-sm-3">
+          <input type="text" name="depth" placeholder="높이" class="form-control" required>
+        </div>
+        <label class="col-sm-1 control-label">(cm)</label>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">태그</label>
+        <div class="col-sm-10">
+          <input type="text" name="keyword" placeholder="태그" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">작품 설명</label>
+        <div class="col-sm-10">
+          <textarea name="description" placeholder="작품 설명" class="form-control" required></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">가격</label>
+        <div class="col-sm-10">
+          <input type="text" name="price" placeholder="가격" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">카테고리</label>
+        <div class="col-sm-10">
+          <select name="category" class="form-control">
+            <option value="painting">페인팅</option>
+            <option value="drawing">스케치</option>
+            <option value="photography">사진</option>
+            <option value="sculpture">조각</option>
+            <option value="collage">콜라주</option>
+            <option value="installation">설치미술</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">주소</label>
+        <div class="col-sm-10">
+          <input type="text" name="address" placeholder="주소" class="form-control" required><br>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">포장</label>
+        <div class="col-sm-10">
+          <select name="packaging" class="form-control">
+            <option value="">포장</option>
+            <option value="tube">드로잉 튜브</option>
+            <option value="frame">액자</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+          <input type="submit" class="form-control" value="등록">
+        </div>
+      </div>
+
     </form>
+  </div>
+  <style>
+    body {margin: 10px}
+    .where {
+      display: block;
+      margin: 25px 15px;
+      font-size: 11px;
+      color: #000;
+      text-decoration: none;
+      font-family: verdana;
+      font-style: italic;
+    }
+    .filebox {display:inline-block; margin-right: 10px;}
+
+
+    .filebox label {
+      display: inline-block;
+      padding: .5em .75em;
+      color: #999;
+      font-size: inherit;
+      line-height: normal;
+      vertical-align: middle;
+      background-color: #fdfdfd;
+      cursor: pointer;
+      border: 1px solid #ebebeb;
+      border-bottom-color: #e2e2e2;
+      border-radius: .25em;
+    }
+
+    .filebox input[type="file"] {  /* 파일 필드 숨기기 */
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip:rect(0,0,0,0);
+      border: 0;
+    }
+  </style>
     <script>
         $('#fileInput').on('change', function () {
             var formData = new FormData();
@@ -53,6 +180,7 @@
                 contentType: false,
                 success: function (data) {
                     $('#filePath').val(data);
+                    $('#img-thumbnail').attr('src', '../images/temp/'+data);
                 },
                 error: function (err) {
                     console.log(err);

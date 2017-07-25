@@ -19,3 +19,16 @@
     <p>copyright(c)2017 All rights reserved by 36.5도. </p>
   </div>
 </div>
+
+<script>
+    $("#regist-trigger").click(function(){
+        $('#myModal_login').modal('hide');
+        $('#myModal_regist').modal('show');
+    });
+
+    $("#login-trigger").click(function(){
+        $('#myModal_regist').modal('hide');
+        $('#myModal_login').modal('show');
+    });
+
+</script>

@@ -14,7 +14,6 @@ router.get('/regist', function (req, res) {
 });
 
 router.post('/regist', function (req, res) {
-
     hasher({password: req.body.password}, function (err, pass, salt, hash) {
         var user = new User();
         user.email = req.body.email;

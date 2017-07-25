@@ -1,0 +1,25 @@
+#footer{
+  position:relative;
+  width:100%;
+  margin:30px 0 0;
+
+  background:#fff;
+  line-height: 20px;
+}
+#footer .Copyright>p{
+  color: black;
+}
+#footer .Copyright{
+  text-align: center;
+  padding-top:2rem;
+}
+
+.footer-menu{
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+}
+.footer-menu ul{
+  margin: 0 auto;
+  overflow: hidden;
+  padding-left: 0;
+}

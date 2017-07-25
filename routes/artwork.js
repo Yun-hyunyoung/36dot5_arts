@@ -9,7 +9,7 @@ var User = require('../models/user');
 var Artwork = require('../models/artwork');
 
 router.get('/regist', function (req, res) {
-    res.render('artwork/regist', { title: '36.5 Arts' });
+    res.render('artwork/regist', { title: '36.5 Arts', session_email: req.session.email });
 });
 
 router.post('/regist', function (req, res) {

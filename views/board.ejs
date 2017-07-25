@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="../stylesheets/reset.css" rel="stylesheet">
+  <!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+  <link href="../stylesheets/style.css" rel="stylesheet">
+  <link href="../stylesheets/banner.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
+  <% include auth/favicon.ejs %>
+</head>
+
+<body>
+  <% include auth/nav.ejs %>
+  <% include auth/modal.ejs %>
+  <% include auth/banner.ejs %>
+          <h1>제목 : <%=board.title%> </h1>
+          <h3>작성자 : <%=board.author%> </h3>
+          <h3>내용 : <%=board.contents%> </h3>
+        <hr>
+        <% if (board.comments !== null) {
+            var comment = board.comments;
+              for(var i = 0; i < board.comments.length; i++) {%>
+        <h4>작성자 : <%=comment[i].author%></h4>
+        <h4>내용 : <%=comment[i].contents%></h4>
+        <hr>
+        <%}}%>
+
+        <form action="/board_list/comment" method="post">
+          <input type="text" name="id" value="<%=board._id%>" hidden="">
+          댓글 : <textarea name="contents"></textarea><br>
+          글쓴이 : <input type="text" name="author"><br>
+          <input type="submit" value="확인">
+        </form>
+  </body>
+</html>

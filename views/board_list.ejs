@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link href="../stylesheets/reset.css" rel="stylesheet">
+  <!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+  <link href="../stylesheets/style.css" rel="stylesheet">
+  <link href="../stylesheets/banner.css" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
+  <% include auth/favicon.ejs %>
+</head>
+
+<body>
+  <% include auth/nav.ejs %>
+  <% include auth/modal.ejs %>
+  <% include auth/banner.ejs %>
+
+
+<a href="write">글쓰기</a><br>
+<div id="board_table">
+    <ul>
+  <% if (board !== null){
+    for(var i = 0; i < board.length; i++) { %>
+
+    <ol class="list">
+      <a href="/board_list/<%= board[i]._id%>"><h3><%= i+1 %> - <%=board[i].title%></h3></a>
+    </ol>
+
+    <%  }} %>
+  </ul>
+</div>
+  <div id="footer">
+  <div class="Copyright">
+    <p>copyright(c)2017 All rights reserved by 36.5도. </p>
+  </div>
+  </div>
+</body>
+</html>
+
+<style>
+#board_table{
+  border: 1px solid black;
+}
+#board_table .list{
+  border: 1px solid red;
+}
+</style>

@@ -23,7 +23,7 @@
   padding-left: 0;
 
 }
-.footer-info ul{
+.footer-info2{
     display: inline-block;
     padding-left: 5rem;
 }
@@ -34,7 +34,7 @@
 
 }
 .footer-info{
-  height: 20rem;
+  height: 100%;
   padding-top: 10rem;
   position: relative;
   display: flex;
@@ -47,4 +47,18 @@
 }
 .footer-info em{
   font-weight: bold;
+}
+@media (min-width: 400px) {
+.footer-info2>ul{
+  display:inline-block;
+}
+}
+@media (max-width: 600px) {
+  .footer-info{
+display: block;
+  }
+}
+.footer-logo{
+  padding-bottom: 3rem;
+  padding-left: 50px;
 }

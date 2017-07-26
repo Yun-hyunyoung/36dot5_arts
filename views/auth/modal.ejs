@@ -1,49 +1,52 @@
-
-
 <!-- login - Modal -->
 <div class="modal fade" id="myModal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-                <div class="modal-content">
-                        <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title" id="myModalLabel">로그인</h4>
-                        </div>
-                        <div class="modal-body">
-                          <section class="container_login">
-                            <section class="login-form">
-                                <div id="authValidCheck"></div>
-                              <form action="/auth/login" method="post" role="login">
-                                <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
-                                <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
-                                <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
-                                <div>
-                                  <a href="#">비밀번호 찾기</a>
-                                </div>
-                              </form>
-                            </section>
-                          </section>
-                        </div>
-                </div>
-        </div>
-</div>  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">로그인</h4>
+      </div>
+      <div class="modal-body">
+        <section class="container_login">
+          <section class="login-form">
+            <div id="authValidCheck"></div>
+            <form action="/auth/login" method="post" role="login">
+              <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
+              <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
+              <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
+              <div>
+                <a href="#">비밀번호 찾기</a>
+              </div>
+            </form>
+          </section>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- regist - Modal -->
 <div class="modal fade" id="myModal_regist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+
+
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">회원가입</h4>
       </div>
       <div class="modal-body">
         <section class="container_login">
           <section class="login-form">
-            <form method="post" action="/auth/regist" role="regist">
+            <form method="post" action="/auth/regist" role="regist" name="regist">
               <input class="form-control input-lg" type="email" name="email" autofocus placeholder="이메일" required>
               <input class="form-control input-lg" type="password" name="password" placeholder="비밀번호" required>
               <input class="form-control input-lg" type="text" name="nickname" placeholder="닉네임" required>
               <input class="form-control input-lg" type="text" name="major" placeholder="전공" required>
-              <input class="btn btn-lg btn-primary btn-block" type="submit" value="회원가입">
+              <% include clause2.ejs %>
+                이용약관에 동의합니다.
+                <input type="checkbox" name="ok_use" id="agree" value="y" align="right" />
+                <input class="btn btn-lg btn-primary btn-block" type="button" value="확인" onclick="check('agree')" value="회원가입">
             </form>
           </section>
         </section>
@@ -76,3 +79,14 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  function check(id) {
+    var agree = document.getElementById(id);
+    if (agree.checked) { //동의여부 체크
+      regist.submit();
+    } else {
+      alert("약관에 동의하셔야 회원가입을 하실 수 있습니다");
+    }
+  }
+</script>

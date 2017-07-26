@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
                 artworks[artworks.length] = artwork[j];
             }
         }
-        console.log(artworks);
+        /*console.log(artworks);*/
         console.log(req.session.email);
         res.render('index', { title: '36.5 Arts', nickname: users.nickname, session_email: req.session.email, artworks : artworks});
     });

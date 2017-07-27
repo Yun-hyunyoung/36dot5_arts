@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %> - Regist</title>
+    <title><%= title %> - 작품 등록</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,11 +10,13 @@
   </head>
   <body>
   <% include ../auth/nav.ejs %>
-    <h1>Artwork regist page</h1>
-    <p>regist your artworks</p>
   <div class="container-fluid">
-    <form action="/artwork/regist" method="post" class="form-horizontal">
 
+    <div style="margin-bottom: 10px">
+      <h1 class="text-center">작품 등록</h1>
+      <hr style="width: 100px">
+    </div>
+    <form action="/artwork/regist" method="post" class="form-horizontal">
       <div class="thumbnail">
         <img src="" alt="" id="img-thumbnail" class="img-thumbnail center-block" style="width: 320px; height: 320px;">
       </div>
@@ -198,7 +200,6 @@
 <style >
   form{
     text-align: left;
-    border: 1px solid black;
     margin-left: 5rem;
     margin-right: 5rem;
   }

@@ -1,3 +1,7 @@
+
+
+
+
 <!-- login - Modal -->
 <div class="modal fade" id="myModal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -39,8 +43,12 @@
         <section class="container_login">
           <section class="login-form">
             <form method="post" action="/auth/regist" role="regist" name="regist">
-              <input class="form-control input-lg" type="email" name="email" autofocus placeholder="이메일" required>
+              <input  id="msg" class="form-control input-lg" type="email" name="email" autofocus placeholder="이메일" required>
+              <!-- <input type="text" id="msg" /> -->
+              <input type="button" id="ajax_test" value="e-mail 중복체크"/>
+              <div id="check_email"></div>
               <input class="form-control input-lg" type="password" name="password" placeholder="비밀번호" required>
+              <input class="form-control input-lg" type="password2" name="password2" placeholder="동일한 비밀번호 입력" required>
               <input class="form-control input-lg" type="text" name="nickname" placeholder="닉네임" required>
               <input class="form-control input-lg" type="text" name="major" placeholder="전공" required>
               <% include clause2.ejs %>
@@ -79,8 +87,33 @@
     </div>
   </div>
 </div>
+<script>
+  // <!--email 체크 로직-->
+  $('#ajax_test').click(function() {
+    $('#result').html('');
+    $.ajax({
+      url: '/ajax/ajax', //주소
+      dataType: 'json', //데이터 형식
+      type: 'POST', //전송 타입
+      data: {
+        'msg': $('#msg').val()
+      }, //데이터를 json 형식, 객체형식으로 전송
+      success: function(result) { //성공했을 때 함수 인자 값으로 결과 값 나옴
+        if (result['result'] == true) {
+          $('#check_email').html(result['msg']).css("color","red");
+        }else{
+          $('#check_email').html(result['msg']).css("color","blue");
+        }
+
+      } //function끝
+    }); // ------      ajax 끝-----------------
+  })
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
 <script type="text/javascript">
+//동의여부 체크
   function check(id) {
     var agree = document.getElementById(id);
     if (agree.checked) { //동의여부 체크

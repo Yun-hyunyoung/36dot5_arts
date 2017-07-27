@@ -11,6 +11,7 @@ var artwork = require('./routes/artwork');
 var image = require('./routes/image');
 var email = require('./routes/sendemail');
 var board_list = require('./routes/board_list')
+var ajax = require('./routes/ajax');
 var app = express();
 
 // express-session setup
@@ -55,7 +56,7 @@ app.use('/auth', auth);
 app.use('/artwork', artwork);
 app.use('/image', image);
 app.use('/board_list',board_list);
-
+app.use('/ajax',ajax);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

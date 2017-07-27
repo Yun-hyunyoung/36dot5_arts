@@ -111,12 +111,23 @@
             </table>
             <hr class="detail-hr">
             <div class=button-div>
+
               <% include auth/modal.ejs %>
                 <a href="#myModal_email" data-target="#myModal_email" data-toggle="modal" class="myButton"> 메일보내기</a>
                 <a href="#" class="myButton">찜하기</a>
+                <form action="/artwork/delete" method="post">
+                  <input type="text" name="email_id" value="<%=session_email%>">
+                  <input type="text" name="artwork_id" value= "<%=artwork._id%>">
+                  <input type="submit" value="글삭제">
+                </form>
             </div>
           </div>
         </form>
+      </div>
+      <div class="description">
+        <p id="line"></p>
+        <h2 class="description_text">작가소개</h2>
+        <h3> 이러이러한 작가 뭐뭐한 작가입니다</h3>
       </div>
       <div class="description">
         <p id="line"></p>

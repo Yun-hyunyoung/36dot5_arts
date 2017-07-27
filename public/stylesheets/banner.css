@@ -1,5 +1,5 @@
 #banner-background{
-  padding-top: 20rem;
+  padding-top: 10rem;
     background-size:cover;
   height: 40rem;
 }
@@ -15,16 +15,14 @@
   text-align: center;
   background-color: rgba(100,100,100,0.3);
   color: rgba(255,255,255,0.7);
-    font-family: 'Jeju Hallasan', serif;
+    /*font-family: 'Jeju Hallasan', serif;*/
 }
 #banner .banner-text h1,p{
   color: rgba(255,255,255,0.9);
-  font-family: 'Jeju Hallasan', serif;
+  /*font-family: 'Jeju Hallasan', serif;*/
 }
 #banner .banner-text {
-
   margin:0 auto ;
-    width: 180px;
   background-color: rgba(100, 100, 100, 0.3);
   border-radius: 1rem;
 }

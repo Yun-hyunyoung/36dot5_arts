@@ -1192,6 +1192,8 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  max-height: 200px;
+
 }
 .img-rounded {
   border-radius: 6px;
@@ -1657,27 +1659,27 @@ pre code {
   margin-left: auto;
 }
 
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .container {
     width: 750px;
   }
-}
+}*/
 
 @media (min-width: 768px) {
   .container_login {
 
   }
 }
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 100%;
   }
-}
-@media (min-width: 1200px) {
+}*/
+/*@media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 100%;
   }
-}
+}*/
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
@@ -4312,8 +4314,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
   .container-fluid > .navbar-collapse {
-    margin-right: 0;
-    margin-left: 0;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 }
 .navbar-static-top {
@@ -6925,6 +6927,8 @@ a {
 }
 body{
   background-color: white;
+  max-width: 1300px;
+  margin:0 auto;
 }
 
 /*# sourceMappingURL=bootstrap.css#banner .count{

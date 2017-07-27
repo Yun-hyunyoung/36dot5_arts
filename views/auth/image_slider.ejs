@@ -1,3 +1,6 @@
+<link href="stylesheets/image_slider.css" rel="stylesheet">
+
+
 <!-- REMOVE Analytics Code -->
 <script type="text/javascript">
 
@@ -15,11 +18,20 @@
 <!-- Analytics Code -->
 <div class="container">
 	<div class="row">
+
 			<div class="well">
-        <h4>최근 등록된 작품</h4>
+
             <!-- Carousel
             ================================================== -->
+
+            <h4>최근 등록된 작품</h4>
+            <hr>
+              <div id=control-box>
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="image/left.jpg" height="30px" width="30px" class="fa fa-chevron-left fa-2x" ></img></a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="image/right.jpg" height="30px" width="30px" class="fa fa-chevron-right fa-2x"></img></a>
+            </div>
             <div id="myCarousel" class="carousel slide">
+
                 <div class="carousel-inner">
                     <%artworks.forEach(function(artwork, idx){%>
                     <%if (idx%4==0){%>
@@ -33,25 +45,22 @@
                                 <div><%=artwork.price%>원</div>
                             </div>
                             <%if (idx%4==3){%>
-                        </div>
-                        <div id=control-box>
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="image/left.jpg" height="30px" width="30px" class="fa fa-chevron-left fa-2x" ></img></a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="image/right.jpg" height="30px" width="30px" class="fa fa-chevron-right fa-2x"></img></a>
-                      </div>
+
                     </div>
+                  </div>
                     <%}})%>
                 </div>
-                <div id=control-box>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="image/left.jpg" height="30px" width="30px" class="fa fa-chevron-left fa-2x" ></img></a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="image/right.jpg" height="30px" width="30px" class="fa fa-chevron-right fa-2x"></img></a>
-              </div>
+
                 <ol class="<carousel></carousel>-indicators">
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
                 </ol>
+
             </div><!-- End Carousel -->
+
         </div><!-- End Well -->
+
     </div>
 </div>
 <script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
@@ -64,52 +73,6 @@
 
 
 <style>
-body { padding-top: 50px; }
 
-/*#####################
-Additional Styles (required)
-######################*/
-.well{
-  text-align: center;
-  background-color: white;
-
-}
-.well h4{
-  padding-bottom: 2rem;
-}
-#myCarousel .thumbnail {
-	margin-bottom: 0;
-}
-
-/* Carousel Control */
-.carousel-control{
-        margin:0 auto;
-        border: 0px;
-        font-weight: 200;
-        line-height: 20px;
-        opacity: 0.5;
-        position: static;
-        height: 30px;
-        width: 30px;
-}
-#control-box{
-  padding-top: 1rem;
-}
-.carousel-indicators {
-	bottom:-30px;
-}
-.carousel-indicators li {
-	border-radius:0;
-	width:10px;
-	height:10px;
-	background:#ccc;
-	border:1px solid #ccc;
-}
-.carousel-indicators .active {
-	width:12px;
-	height:12px;
-	background:#3276b1;
-	border-color:#3276b1;
-}
 
 </style>

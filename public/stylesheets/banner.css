@@ -15,6 +15,7 @@
   text-align: center;
   background-color: rgba(100,100,100,0.3);
   color: rgba(255,255,255,0.7);
+  display: flex;
     /*font-family: 'Jeju Hallasan', serif;*/
 }
 #banner .banner-text h1,p{
@@ -25,4 +26,7 @@
   margin:0 auto ;
   background-color: rgba(100, 100, 100, 0.3);
   border-radius: 1rem;
+}
+.count>h3{
+    margin: 0 auto;
 }

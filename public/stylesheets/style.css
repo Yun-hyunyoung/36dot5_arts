@@ -13,7 +13,7 @@ a {
 }
 
 #main_text>h1,>p{
-font-family: 'Jeju Hallasan', serif;
+/*font-family: 'Jeju Hallasan', serif;*/
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   text-align: center;
@@ -70,7 +70,7 @@ body {
   margin: 0 auto;
 }
 #contents_text h2{
-  font-family: 'Jeju Hallasan', serif;
+  /*font-family: 'Jeju Hallasan', serif;*/
 }
 #contents_text{
   padding-top: 7rem;
@@ -3311,7 +3311,7 @@ fieldset[disabled] .btn-success.focus {
 .btn-info:focus,
 .btn-info.focus {
   color: black;
-  background-color: #white;
+  background-color: white;
   border-color: #555;
 }
 .btn-info:hover {

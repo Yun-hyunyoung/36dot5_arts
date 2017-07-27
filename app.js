@@ -30,7 +30,10 @@ var promise = mongoose.connect('mongodb://localhost/mydb', {
 });
 
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', function() {
+    console.error.bind(console, 'app.js: Mongodb connection error:');
+    // 에러 처리
+});
 db.once('open', function() {
     // we're connected!
     console.log('connected successfully, port = 9000');

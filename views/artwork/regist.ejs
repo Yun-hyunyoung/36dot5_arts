@@ -3,9 +3,8 @@
   <head>
     <title><%= title %> - 작품 등록</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
@@ -16,7 +15,7 @@
       <h1 class="text-center">작품 등록</h1>
       <hr style="width: 100px">
     </div>
-    <form action="/artwork/regist" method="post" class="form-horizontal">
+    <form id="artwork_regist_form" action="/artwork/regist" method="post" class="form-horizontal">
       <div class="thumbnail">
         <img src="" alt="" id="img-thumbnail" class="img-thumbnail center-block" style="width: 320px; height: 320px;">
       </div>
@@ -40,20 +39,32 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">재료</label>
         <div class="col-sm-10">
-          <select name="material" class="form-control">
-            <option value="paper">종이</option>
-            <option value="canvas">캔버스</option>
-            <option value="copper">청동</option>
-            <option value="aluminium">알루미늄</option>
-            <option value="other">기타</option>
-          </select>
+
+          <div class="tag_widget">
+            <input type="text" class="tag_input" id="input_mat" placeholder="이 곳을 클릭해 추가해주세요">
+            <div class="tag_wrapper" id="tag_wrapper_mat">
+            </div>
+            <div id="multi_select_mat">
+              <div><ul class="multi_select_ul" id="multi_select_ul_mat"></ul></div>
+              <input name="material" hidden>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="form-group">
         <label class="col-sm-2 control-label">도구</label>
         <div class="col-sm-10">
-          <input type="text" name="medium" placeholder="도구" class="form-control" required>
+
+          <div class="tag_widget">
+            <input type="text" class="tag_input" id="input_med" placeholder="이 곳을 클릭해 추가해주세요">
+            <div class="tag_wrapper" id="tag_wrapper_med">
+            </div>
+            <div id="multi_select_med">
+              <div><ul class="multi_select_ul" id="multi_select_ul_med"></ul></div>
+              <input name="medium" hidden>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -74,7 +85,16 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">태그</label>
         <div class="col-sm-10">
-          <input type="text" name="keyword" placeholder="태그" class="form-control" required>
+
+          <div class="tag_widget">
+            <input type="text" class="tag_input" id="input_tag" placeholder="이 곳에 태그를 입력해주세요">
+            <div class="tag_wrapper" id="tag_wrapper">
+            </div>
+            <div id="multi_select">
+              <div><ul class="multi_select_ul" id="multi_select_ul"></ul></div>
+              <input name="keyword" hidden>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -97,12 +117,12 @@
         <label class="col-sm-2 control-label">카테고리</label>
         <div class="col-sm-10">
           <select name="category" class="form-control">
-            <option value="painting">페인팅</option>
-            <option value="drawing">스케치</option>
-            <option value="photography">사진</option>
-            <option value="sculpture">조각</option>
-            <option value="collage">콜라주</option>
-            <option value="installation">설치미술</option>
+            <option value="페인팅">페인팅</option>
+            <option value="스케치">스케치</option>
+            <option value="사진">사진</option>
+            <option value="조각">조각</option>
+            <option value="콜라주">콜라주</option>
+            <option value="설치미술">설치미술</option>
           </select>
         </div>
       </div>
@@ -118,9 +138,8 @@
         <label class="col-sm-2 control-label">포장</label>
         <div class="col-sm-10">
           <select name="packaging" class="form-control">
-            <option value="">포장</option>
-            <option value="tube">드로잉 튜브</option>
-            <option value="frame">액자</option>
+            <option value="드로잉 튜브">드로잉 튜브</option>
+            <option value="액자">액자</option>
           </select>
         </div>
       </div>
@@ -128,7 +147,7 @@
       <div class="form-group">
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
-          <input type="submit" class="form-control" value="등록">
+          <input type="submit" id="artwork_regist_submit_btn" class="form-control" value="등록">
         </div>
       </div>
       
@@ -172,8 +191,208 @@
       clip:rect(0,0,0,0);
       border: 0;
     }
+
+    /*form{
+      text-align: left;
+      margin-left: 5rem;
+      margin-right: 5rem;
+    }*/
+    @media (min-width: 768px) {
+      form{
+        text-align: left;
+        margin-left: 5rem;
+        margin-right: 5rem;
+        padding: 0px;
+      }
+    }
+
+    /*tagging css*/
+    .tag_widget{
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      padding-bottom: 5px;
+      padding-top: 0px;
+    }
+    .tag_input{
+      padding: 10px;
+      height: 34px;
+      width: 100%;
+      background-color: transparent;
+      border: 0px solid;
+    }
+    .tag_wrapper{
+      width: 95%;
+      position: absolute;
+      z-index: 1000;
+    }
+    .tag_wrapper_ul{
+      list-style-type: none;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      border: 1px solid #ccc;
+      overflow: scroll;
+      overflow-x: hidden;
+      height: auto;
+      max-height: 150px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag_list{
+      background-color: #FFFFFF;
+      padding: 10px;
+    }
+    .multi_select_ul:first-child{
+      padding-left: 3px;
+    }
+    .multi_select_ul{
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .selected_tag_list{
+      cursor: default;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      background-color: #ccc;
+      padding: 4px;
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+    .tag_close_btn{
+      margin-left:3px;
+      margin-right:2px;
+      display: inline;
+      cursor: pointer;
+    }
   </style>
     <script>
+      var mat_tags = ['깡통', '스크류바', '비닐하우스', '지구온난화'];
+      var med_tags = ['황다', '홍삼', '저탱', '파도'];
+      tagging_func('mat', mat_tags);
+      tagging_func('med', med_tags);
+      function tagging_func(keyword, arr) {
+
+          $('#input_'+keyword).on('focus', function () {
+
+              $('#tag_wrapper_'+keyword).html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul_'+keyword+'"></ul>');
+              for (var i = 0; i < arr.length; i++){
+                  if(arr[i] !== '') $('#tag_wrapper_ul_'+keyword).append('<li class="tag_list" id="'+keyword+'_tag_'+i+'">'+arr[i]+'</li>');
+              }
+
+              var ul = $('#tag_wrapper_ul_'+keyword+' > li');
+
+              ul.on('mouseover',function () {
+                  $(this).css('background', '#9E9C9C');
+              });
+              ul.on('mouseout', function () {
+                  $(this).css('background', '#FFFFFF');
+              });
+
+              ul.on('mousedown', function () {
+                  console.log(this);
+                  var tag_idx = $(this)[0].id.substr(8, this.length);
+
+                  var text = this.innerText;
+                  console.log(text);
+
+                  $('#multi_select_ul_'+keyword).append('<li class="selected_tag_list" id="selected_tag_list_'+keyword+'_'+tag_idx+'">'+text+'<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_'+keyword+'_'+tag_idx+'" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
+
+                  $('#tag_close_btn_'+keyword+'_'+tag_idx).on('click', function () {
+                      $(this).parent().remove();
+                      console.log($(this).parent());
+                  });
+                  arr[tag_idx] = '';
+              });
+          });
+
+          $('#input_'+keyword).on('blur', function () {
+              $('#tag_wrapper_'+keyword).html('');
+          });
+      }
+
+      var tag_idx_ = 0;
+      $('#input_tag').on('focus', function () {
+
+          $('#tag_wrapper').html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul"></ul>');
+          $('#tag_wrapper_ul').append('<li class="tag_list">이 곳을 클릭하면 태그가 입력됩니다.</li>');
+
+          var ul = $('#tag_wrapper_ul > li');
+          ul.on('mouseover',function () {
+              $(this).css('background', '#9E9C9C');
+          });
+          ul.on('mouseout', function () {
+              $(this).css('background', '#FFFFFF');
+          });
+
+          ul.on('mousedown', function () {
+              console.log(this);
+              var tag_idx = $(this)[0].id.substr(8, this.length);
+
+              var text = $('#input_tag').val();
+              console.log(text);
+
+              if(text.length > 0){
+                $('#multi_select_ul').append('<li class="selected_tag_list" id="selected_tag_list_'+tag_idx_+'">'+text+'<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_'+tag_idx_+'"><span aria-hidden="true">&times;</span></button></li>');
+
+                $('#tag_close_btn_'+tag_idx_).on('click', function () {
+                    $(this).parent().remove();
+                    console.log($(this).parent());
+                });
+                $('#input_tag').val('');
+                tag_idx_++;
+              }
+          });
+      });
+
+      $('#input_tag').on('blur', function () {
+          $('#tag_wrapper').html('');
+      });
+      $('#input_tag').on('keyup', function () {
+          var data = $(this).val();
+          var a = $('#tag_wrapper_ul > li')[0].innerText = "\"" + data + "\" 이 곳을 클릭하면 태그가 입력됩니다.";
+      });
+
+      $('#artwork_regist_submit_btn').on('click', function (e) {
+          e.preventDefault();
+          var mat = $('#multi_select_ul_mat > li');
+          var med = $('#multi_select_ul_med > li');
+          var tag = $('#multi_select_ul > li');
+
+          if(mat.length === 0){
+              alert('재료 입력해줭');
+          } else if (med.length === 0) {
+              alert('도구 입력해줭');
+          } else if (tag.length === 0) {
+              alert('태그 입력해줭');
+          } else {
+              $('#multi_select_mat > input')[0].value = getTagValues(mat);
+              $('#multi_select_med > input')[0].value = getTagValues(med);
+              $('#multi_select > input')[0].value = getTagValues(tag);
+              $('#artwork_regist_form').submit();
+          }
+      })
+      $('#artwork_regist_form').on('submit', function (e) {
+
+      });
+
+      function getTagValues(tags) {
+          var tagValues = '';
+          for (var i = 0; i < tags.length; i++){
+              if(i !== 0) tagValues += ',';
+              var tagText = tags[i].innerText;
+              tagValues += tagText.substring(0, tagText.length - 1);
+          }
+          return tagValues;
+      }
+
         $('#fileInput').on('change', function () {
             var formData = new FormData();
             formData.append('fileInput', this.files[0]);
@@ -196,11 +415,3 @@
     </script>
   </body>
 </html>
-
-<style >
-  form{
-    text-align: left;
-    margin-left: 5rem;
-    margin-right: 5rem;
-  }
-</style>

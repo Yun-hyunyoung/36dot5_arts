@@ -37,8 +37,10 @@ router.post('/regist', function (req, res) {
             res.redirect('/');
         }
         // move file temp to image
-        var imgPath = 'temp\\' + artwork.image;
-        fs.rename(imgPath, imgPath.replace('temp', 'public/images/artworks'));
+        console.log('image path1: ' + artwork.image);
+        var imgPath = 'public/images/temp/' + artwork.image;
+        console.log('image path2: ' + imgPath);
+        fs.rename(imgPath, imgPath.replace('public/images/temp', 'public/images/artworks'));
         res.redirect('/');
     });
 });

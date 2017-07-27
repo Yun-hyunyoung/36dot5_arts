@@ -77,4 +77,17 @@ router.post('/comment', function(req, res) {
     res.redirect('/board_list/' + req.body.id);
   });
 });
+
+
+/* board delete by id */
+router.post('/delete', function(req, res) {
+  Board.findByIdAndRemove(req.body.board_id,function(err, board){
+    if (err) {
+      console.log(err);
+      res.redirect('/');
+    }
+    console.log(req.body.board_id);
+    res.redirect('/');
+  });
+  });
 module.exports = router;

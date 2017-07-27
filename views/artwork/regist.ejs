@@ -140,6 +140,7 @@
           <select name="packaging" class="form-control">
             <option value="드로잉 튜브">드로잉 튜브</option>
             <option value="액자">액자</option>
+            <option value="상자">상자</option>
           </select>
         </div>
       </div>
@@ -274,8 +275,10 @@
     }
   </style>
     <script>
-      var mat_tags = ['깡통', '스크류바', '비닐하우스', '지구온난화'];
-      var med_tags = ['황다', '홍삼', '저탱', '파도'];
+      var mat_tags = ['볼펜', '잉크', '파스텔', '연필', '초크', '그래픽', '애나멜', '아크릴', '기름', '스프레이', '물감', '세라믹', '천', '사진', '진흙', '스텐실', '나무',' 기타'];
+      var med_tags = ['청동', '철', '알루미늄', '세라믹', '유리', '종이', '플라스틱', '돌', '나무', '기타'];
+      mat_tags.sort();
+      med_tags.sort();
       tagging_func('mat', mat_tags);
       tagging_func('med', med_tags);
       function tagging_func(keyword, arr) {
@@ -297,17 +300,16 @@
               });
 
               ul.on('mousedown', function () {
-                  console.log(this);
                   var tag_idx = $(this)[0].id.substr(8, this.length);
-
                   var text = this.innerText;
-                  console.log(text);
 
                   $('#multi_select_ul_'+keyword).append('<li class="selected_tag_list" id="selected_tag_list_'+keyword+'_'+tag_idx+'">'+text+'<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_'+keyword+'_'+tag_idx+'" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
 
                   $('#tag_close_btn_'+keyword+'_'+tag_idx).on('click', function () {
-                      $(this).parent().remove();
-                      console.log($(this).parent());
+                      var parent = $(this).parent();
+                      var parentText = parent[0].innerText;
+                      parent.remove();
+                      arr[tag_idx] = parentText.substr(0, parentText.length - 1);
                   });
                   arr[tag_idx] = '';
               });
@@ -333,11 +335,7 @@
           });
 
           ul.on('mousedown', function () {
-              console.log(this);
-              var tag_idx = $(this)[0].id.substr(8, this.length);
-
               var text = $('#input_tag').val();
-              console.log(text);
 
               if(text.length > 0){
                 $('#multi_select_ul').append('<li class="selected_tag_list" id="selected_tag_list_'+tag_idx_+'">'+text+'<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_'+tag_idx_+'"><span aria-hidden="true">&times;</span></button></li>');

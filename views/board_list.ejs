@@ -12,6 +12,7 @@
 
   <link href="../stylesheets/style.css" rel="stylesheet">
   <link href="../stylesheets/banner.css" rel="stylesheet">
+  <link href="../stylesheets/footer.css" rel="stylesheet">
   <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
   <% include auth/favicon.ejs %>
 </head>
@@ -21,25 +22,47 @@
   <% include auth/modal.ejs %>
   <% include auth/banner.ejs %>
 
+<div class="board_container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>날짜</th>
+        <th>조회수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (contents !== null){
+        for(var i = 0; i < contents.length; i++) { %>
+      <tr>
+        <td><%= i+1 %></td>
+        <td><%=contents[i].title%></td>
+        <td><%=contents[i].author%></td>
+        <td><%=contents[i].board_date%></td>
+        <td></td>
+      </tr>
+        <%  }} %>
+    </tbody>
+  </table>
+  <hr>
 
-<a href="write">글쓰기</a><br>
-<div id="board_table">
-    <ul>
-  <% if (board !== null){
-    for(var i = 0; i < board.length; i++) { %>
-
-    <ol class="list">
-      <a href="/board_list/<%= board[i]._id%>"><h3><%= i+1 %> - <%=board[i].title%></h3></a>
-    </ol>
-
+  <ul class="pagination">
+<li><a href="board_list?page=<%=pre_page%>">&laquo;</a></li>
+<% if (contents !== null){
+  for(var i = 0; i < pagination.length/5; i++) { %>
+<li><a href="board_list?page=<%= i+1 %>"><%= i+1 %></a></li>
     <%  }} %>
-  </ul>
-</div>
-  <div id="footer">
-  <div class="Copyright">
-    <p>copyright(c)2017 All rights reserved by 36.5도. </p>
-  </div>
-  </div>
+<li><a href="board_list?page=<%=next_page%>">&raquo;</a></li>
+</ul>
+
+
+  <a href="write" class="btn btn-default">글쓰기</a><br>
+
+
+  <% include auth/footer.ejs %>
+
 </body>
 </html>
 
@@ -50,4 +73,8 @@
 #board_table .list{
   border: 1px solid red;
 }
+.board_container{
+  padding-top: 3rem;
+}
+
 </style>

@@ -13,14 +13,20 @@
             <form action="/auth/login" method="post" role="login">
               <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
               <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
+              <hr>
               <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
-              <div>
-                <a href="#">비밀번호 찾기</a>
-              </div>
             </form>
           </section>
         </section>
       </div>
+      <div class="modal-footer">
+        <div class="text-right">
+          비밀번호를 잊으셨나요? <a href="#">비밀번호 찾기</a>
+        </div>
+        <div class="text-right">
+          계정이 없으신가요? <a href="#" id="regist-trigger">회원가입</a>
+        </div>
+        </div>
     </div>
   </div>
 </div>
@@ -52,6 +58,11 @@
             </form>
           </section>
         </section>
+      </div>
+      <div class="modal-footer">
+        <div class="text-right">
+          이미 picsell의 멤버이신가요? <a href="#" id="login-trigger">로그인</a>
+        </div>
       </div>
     </div>
   </div>

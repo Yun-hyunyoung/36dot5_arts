@@ -13,14 +13,20 @@
             <form action="/auth/login" method="post" role="login">
               <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
               <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
+              <hr>
               <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
-              <div>
-                <a href="#">비밀번호 찾기</a>
-              </div>
             </form>
           </section>
         </section>
       </div>
+      <div class="modal-footer">
+        <div class="text-right">
+          비밀번호를 잊으셨나요? <a href="#">비밀번호 찾기</a>
+        </div>
+        <div class="text-right">
+          계정이 없으신가요? <a href="#" id="regist-trigger">회원가입</a>
+        </div>
+        </div>
     </div>
   </div>
 </div>
@@ -30,8 +36,6 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-
-
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">회원가입</h4>
       </div>
@@ -41,17 +45,24 @@
             <form method="post" action="/auth/regist" role="regist" name="regist">
               <input id="email-valid-check" class="form-control input-lg" type="email" name="email" autofocus placeholder="이메일" required>
               <div id="check_email"></div>
-              <input class="form-control input-lg" type="password" name="password" placeholder="비밀번호" required>
-              <input class="form-control input-lg" type="password2" name="password2" placeholder="동일한 비밀번호 입력" required>
-              <input class="form-control input-lg" type="text" name="nickname" placeholder="닉네임" required>
-              <input class="form-control input-lg" type="text" name="major" placeholder="전공" required>
+              <input id="password-valid-check" class="form-control input-lg" type="password" name="password" placeholder="비밀번호" required>
+                <div id="check_password"></div>
+              <input class="form-control input-lg" type="password" name="password2" placeholder="동일한 비밀번호 입력" required>
+              <input id="nickname-input" class="form-control input-lg" type="text" name="nickname" placeholder="닉네임" required>
+              <input id="major-input" class="form-control input-lg" type="text" name="major" placeholder="전공" required>
+                <hr>
               <% include clause2.ejs %>
-                이용약관에 동의합니다.
-                <input type="checkbox" name="ok_use" id="agree" value="y" align="right" />
+                <input type="checkbox" name="ok_use" id="agree" value="y" align="right">
+                <a href="#" id="toggle-clause">이용약관</a>에 동의합니다.
                 <input class="btn btn-lg btn-primary btn-block" type="button" value="확인" onclick="check('agree')" value="회원가입">
             </form>
           </section>
         </section>
+      </div>
+      <div class="modal-footer">
+        <div class="text-right">
+          이미 picsell의 멤버이신가요? <a href="#" id="login-trigger">로그인</a>
+        </div>
       </div>
     </div>
   </div>
@@ -81,42 +92,143 @@
     </div>
   </div>
 </div>
+<style>
+    .need-input{
+        border-color: #BC1A4A;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(188, 26, 74, .6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(188, 26, 74, .6);
+    }
+</style>
 <script>
-  $('#ajax').auto
-  // <!--email 체크 로직-->
-  $('#email-valid-check').on('blur', function() {
-  if ($(this).val().length > 0) {
-    $('#result').html('');
-    $.ajax({
-        url: '/ajax/ajax', //주소
-        dataType: 'json', //데이터 형식
-        type: 'POST', //전송 타입
-        data: {
-          'msg': $('#email-valid-check').val()
-        }, //데이터를 json 형식, 객체형식으로 전송
-        success: function(result) { //성공했을 때 함수 인자 값으로 결과 값 나옴
-          if (result['result'] == true) {
-            $('#check_email').html(result['msg']).css("color", "red");
-          } else {
-            $('#check_email').html(result['msg']).css("color", "blue");
-          }
+    /*
+        로그인 모달 script
+     */
+    $("#regist-trigger").click(function(){
+        $('#myModal_login').modal('hide');
+        $('#myModal_regist').modal('show');
+    });
+
+    $("#login-trigger").click(function(){
+        $('#myModal_regist').modal('hide');
+        $('#myModal_login').modal('show');
+    });
+
+    $('#login-email').on('click', function () { $(this).removeClass('need-input'); });
+    $('#login-password').on('click', function () { $(this).removeClass('need-input'); });
+
+    $('#btn-login').on('click', function (e) {
+        e.preventDefault();
+        var auth_alert_div = $('#authValidCheck');
+        var email = $('#login-email');
+        var password = $('#login-password');
+        auth_alert_div.html('');
+        if (email.val().length === 0) email.addClass('need-input');
+        else if (password.val().length === 0) password.addClass('need-input');
+        else {
+            $.ajax({
+                type: 'post',
+                url: '/auth/login',
+                data: {
+                    email: email.val(),
+                    password: password.val()
+                },
+                success: function (data) {
+                    if (data.error === 'failedLogin' || data.error === 'userNotFound') {
+                        auth_alert_div.html('<span class="label label-danger">로그인 실패 : 로그인 정보를 확인해주세요.</span>');
+                    } else if (data.success === 1) {
+                        location.href = '/';
+                    }
+                },
+                error: function (x, err) {
+                    console.log(x);
+                    console.log(err);
+                }
+            });
         }
     });
-  };
-});
 
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    /*
+        회원가입 모달 script
+     */
+  // <!--email 체크 로직-->
+  $('#email-valid-check').on('blur', function() {
+      $(this).removeClass('need-input');
+      $('#check_email').html('');
+      if ($(this).val().length > 0) {
+          if (!emailRegex($(this).val())) {
+              $('#check_email').html('이메일 형식이 아닙니다.').css("color", "red");
+              $(this).addClass('need-input');
+          }
+          else {
+              $.ajax({
+                  url: '/ajax/ajax', //주소
+                  dataType: 'json', //데이터 형식
+                  type: 'POST', //전송 타입
+                  data: {
+                      'msg': $('#email-valid-check').val()
+                  }, //데이터를 json 형식, 객체형식으로 전송
+                  success: function (result) { //성공했을 때 함수 인자 값으로 결과 값 나옴
+                      if (result['result'] == true) {
+                          $('#check_email').html(result['msg']).css("color", "red");
+                      } else {
+                          $('#check_email').html(result['msg']).css("color", "blue");
+                      }
 
+                  } //function끝
+              }); // ------      ajax 끝-----------------
+          }
+      }
+  })
+  // <!-- password 체크 로직 -->
+  $('#password-valid-check').on('blur', function () {
+      if(passwordRegex($(this).val())) {
+          $('#check_password').html('사용 가능한 비밀번호입니다.').css("color", "blue");
+          $(this).removeClass('need-input');
+      }
+      else {
+          $('#check_password').html('비밀번호는 8~16자여야 하며 최소 하나의 숫자 혹은 특수문자를 포함해야합니다.').css("color", "red");
+          $(this).addClass('need-input');
+      }
+  });
 
-<script type="text/javascript">
-  //동의여부 체크
+  $('#nickname-input').on('click', function () { $(this).removeClass('need-input'); });
+  $('#major-input').on('click', function () { $(this).removeClass('need-input'); });
+
+  function passwordRegex(data) {
+      var regex = /^(?=.*[a-zA-Z])((?=.*\d)|(?=.*\W)).{8,16}$/;
+      return regex.test(data);
+  }
+
+  function emailRegex(data){
+      var regex = /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/;
+      return regex.test(data);
+  }
+    $('#toggle-clause').on('click', function () {
+        $('#text-clause').toggle("slow");
+    })
+
+//동의여부 체크
   function check(id) {
     var agree = document.getElementById(id);
-    if (agree.checked) { //동의여부 체크
-      regist.submit();
-    } else {
-      alert("약관에 동의하셔야 회원가입을 하실 수 있습니다");
-    }
+    var mail = $('#email-valid-check');
+    var pass = $('#password-valid-check');
+    var nick = $('#nickname-input');
+    var major = $('#major-input');
+
+
+      if (mail.val().length === 0) {
+          mail.addClass('need-input');
+      } else if (pass.val().length === 0) {
+          pass.addClass('need-input');
+      } else if (nick.val().length === 0) {
+          nick.addClass('need-input');
+      } else if (major.val().length === 0) {
+          major.addClass('need-input');
+      } else if (!agree.checked) { //동의여부 체크
+          alert("약관에 동의하셔야 회원가입을 하실 수 있습니다.");
+      } else {
+          regist.submit();
+      }
   }
 </script>

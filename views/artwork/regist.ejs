@@ -15,7 +15,7 @@
       <h1 class="text-center">작품 등록</h1>
       <hr style="width: 100px">
     </div>
-    <form id="artwork_regist_form" action="/artwork/regist" method="post" class="form-horizontal">
+    <form id="artwork_regist_form" action="/artwork/regist" method="post" class="form-horizontal" autocomplete="off">
       <div class="thumbnail">
         <img src="" alt="" id="img-thumbnail" class="img-thumbnail center-block" style="width: 320px; height: 320px;">
       </div>
@@ -28,7 +28,21 @@
           <input type="text" id="filePath" name="filePath" hidden>
         </div>
       </div>
-
+        <hr>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">카테고리</label>
+            <div class="col-sm-10">
+                <select name="category" class="form-control">
+                    <option value="페인팅">페인팅</option>
+                    <option value="스케치">스케치</option>
+                    <option value="사진">사진</option>
+                    <option value="조각">조각</option>
+                    <option value="콜라주">콜라주</option>
+                    <option value="설치미술">설치미술</option>
+                </select>
+            </div>
+        </div>
+        <hr>
       <div class="form-group">
         <label class="col-sm-2 control-label">제목</label>
         <div class="col-sm-10">
@@ -41,8 +55,8 @@
         <div class="col-sm-10">
 
           <div class="tag_widget">
-            <input type="text" class="tag_input" id="input_mat" placeholder="이 곳을 클릭해 추가해주세요">
-            <div class="tag_wrapper" id="tag_wrapper_mat">
+            <input type="text" class="tag_input" id="input_mat" placeholder="이 곳을 클릭해 추가해주세요.">
+            <div class="tag_wrapper" id="tag_wrapper_mat" hidden>
             </div>
             <div id="multi_select_mat">
               <div><ul class="multi_select_ul" id="multi_select_ul_mat"></ul></div>
@@ -57,8 +71,8 @@
         <div class="col-sm-10">
 
           <div class="tag_widget">
-            <input type="text" class="tag_input" id="input_med" placeholder="이 곳을 클릭해 추가해주세요">
-            <div class="tag_wrapper" id="tag_wrapper_med">
+            <input type="text" class="tag_input" id="input_med" placeholder="이 곳을 클릭해 추가해주세요.">
+            <div class="tag_wrapper" id="tag_wrapper_med" hidden>
             </div>
             <div id="multi_select_med">
               <div><ul class="multi_select_ul" id="multi_select_ul_med"></ul></div>
@@ -67,7 +81,7 @@
           </div>
         </div>
       </div>
-
+        <hr>
       <div class="form-group">
         <label class="col-sm-2 control-label">크기</label>
         <div class="col-sm-3">
@@ -81,14 +95,14 @@
         </div>
         <label class="col-sm-1 control-label">(cm)</label>
       </div>
-
+        <hr>
       <div class="form-group">
         <label class="col-sm-2 control-label">태그</label>
         <div class="col-sm-10">
 
           <div class="tag_widget">
-            <input type="text" class="tag_input" id="input_tag" placeholder="이 곳에 태그를 입력해주세요">
-            <div class="tag_wrapper" id="tag_wrapper">
+            <input type="text" class="tag_input" id="input_tag" placeholder="이 곳에 태그를 입력해주세요.">
+            <div class="tag_wrapper" id="tag_wrapper" hidden>
             </div>
             <div id="multi_select">
               <div><ul class="multi_select_ul" id="multi_select_ul"></ul></div>
@@ -104,29 +118,15 @@
           <textarea name="description" placeholder="작품 설명" class="form-control" required></textarea>
         </div>
       </div>
-
+        <hr>
       <div class="form-group">
         <label class="col-sm-2 control-label">가격</label>
         <div class="col-sm-10">
           <input type="text" name="price" placeholder="가격" class="form-control" required>
-          <p>*택배비 책정하여 적어라!<br> *보여지는가격 = 입력가격 + 수수료 20%</p>
+           <p id="class-test">*택배비 책정하여 적어라!<br> *보여지는가격 = 입력가격 + 수수료 20%</p>
         </div>
       </div>
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label">카테고리</label>
-        <div class="col-sm-10">
-          <select name="category" class="form-control">
-            <option value="페인팅">페인팅</option>
-            <option value="스케치">스케치</option>
-            <option value="사진">사진</option>
-            <option value="조각">조각</option>
-            <option value="콜라주">콜라주</option>
-            <option value="설치미술">설치미술</option>
-          </select>
-        </div>
-      </div>
-
+        <hr>
       <div class="form-group">
         <label class="col-sm-2 control-label">주소</label>
         <div class="col-sm-10">
@@ -234,7 +234,7 @@
       overflow: scroll;
       overflow-x: hidden;
       height: auto;
-      max-height: 150px;
+      max-height: 159px;
       margin: 0;
       padding: 0;
     }
@@ -243,6 +243,14 @@
       background-color: #FFFFFF;
       padding: 10px;
     }
+    .tag_list:hover{
+        background: #9E9C9C;
+        color: #FFF;
+    }
+    .selected{
+        background: #3677E6;
+        color: #FFF;
+    }
     .multi_select_ul:first-child{
       padding-left: 3px;
     }
@@ -250,6 +258,7 @@
       list-style-type: none;
       margin: 0;
       padding: 0;
+        padding-top: 5px;
     }
     .selected_tag_list{
       cursor: default;
@@ -279,25 +288,18 @@
       var med_tags = ['청동', '철', '알루미늄', '세라믹', '유리', '종이', '플라스틱', '돌', '나무', '기타'];
       mat_tags.sort();
       med_tags.sort();
-      tagging_func('mat', mat_tags);
-      tagging_func('med', med_tags);
-      function tagging_func(keyword, arr) {
+      tagging_func_param('mat', mat_tags);
+      tagging_func_param('med', med_tags);
+      tagging_func();
 
-          $('#input_'+keyword).on('focus', function () {
-
-              $('#tag_wrapper_'+keyword).html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul_'+keyword+'"></ul>');
-              for (var i = 0; i < arr.length; i++){
-                  if(arr[i] !== '') $('#tag_wrapper_ul_'+keyword).append('<li class="tag_list" id="'+keyword+'_tag_'+i+'">'+arr[i]+'</li>');
-              }
-
+      // 재료, 도구 태깅 함수
+      function tagging_func_param(keyword, arr) {
+          var curr_idx = 0;
+          const li_limit = 4;
+          var li_curr = 0;
+          function showTagWrapperFunc() {
+              curr_idx = 0;
               var ul = $('#tag_wrapper_ul_'+keyword+' > li');
-
-              ul.on('mouseover',function () {
-                  $(this).css('background', '#9E9C9C');
-              });
-              ul.on('mouseout', function () {
-                  $(this).css('background', '#FFFFFF');
-              });
 
               ul.on('mousedown', function () {
                   var tag_idx = $(this)[0].id.substr(8, this.length);
@@ -313,50 +315,148 @@
                   });
                   arr[tag_idx] = '';
               });
+          }
+
+          $('#input_'+keyword).on('click', function () {
+              $('#tag_wrapper_'+keyword).html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul_'+keyword+'"></ul>');
+              for (var i = 0; i < arr.length; i++){
+                  if(arr[i] !== '') $('#tag_wrapper_ul_'+keyword).append('<li class="tag_list" id="'+keyword+'_tag_'+i+'">'+arr[i]+'</li>');
+              }
+              $('#tag_wrapper_'+keyword).slideDown(200);
+              showTagWrapperFunc();
           });
 
           $('#input_'+keyword).on('blur', function () {
+              $(this).val('');
               $('#tag_wrapper_'+keyword).html('');
+              $('#tag_wrapper_'+keyword).hide();
+          });
+          $('#input_'+keyword).on('keydown', function (evt) {
+              var all_tag = $('#tag_wrapper_ul_'+keyword+' > li');
+
+              if(evt.keyCode == 13) {
+
+                  var curr_tag = $('.tag_list.selected');
+                  var tagtag = curr_tag.attr('id')
+                  console.log(tagtag);
+                  if (tagtag !== undefined) {
+                      var tag_idx = tagtag.substr(8, curr_tag.length);
+                      var text = curr_tag.text();
+
+                      $('#multi_select_ul_' + keyword).append('<li class="selected_tag_list" id="selected_tag_list_' + keyword + '_' + tag_idx + '">' + text + '<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_' + keyword + '_' + tag_idx + '" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
+
+                      $('#tag_close_btn_' + keyword + '_' + tag_idx).on('click', function (e) {
+                          e.preventDefault();
+                          var parent = $(this).parent();
+                          var parentText = parent[0].innerText;
+                          parent.remove();
+                          arr[tag_idx] = parentText.substr(0, parentText.length - 1);
+                      });
+                      arr[tag_idx] = '';
+
+                      $(this).val('');
+                      $('#tag_wrapper_'+keyword).html('');
+                      $('#tag_wrapper_'+keyword).hide();
+                  }
+                  evt.preventDefault();
+              }else if(evt.keyCode == 38){ // arrow up
+                  evt.preventDefault();
+                  if(curr_idx > 1) curr_idx--;
+                  var curr_tag = $(all_tag[curr_idx]).prev();
+                  var prev_tag = curr_tag.next();
+                  curr_tag.addClass('selected');
+                  prev_tag.removeClass('selected');
+
+                  // scroll top 값으로 스크롤 이동
+                  var parent_ul = curr_tag.parent();
+                  console.log(li_curr);
+                  if(li_curr <= 1) parent_ul.scrollTop(parent_ul.scrollTop()-39);
+                  else li_curr--;
+
+                  $(this).val(curr_tag.text());
+              }else if(evt.keyCode == 40){ // arrow down
+                  evt.preventDefault();
+                  var curr_tag = $(all_tag[curr_idx]);
+                  var prev_tag = curr_tag.prev();
+                  curr_tag.addClass('selected');
+                  prev_tag.removeClass('selected');
+
+                  // scroll top 값으로 스크롤 이동
+                  var parent_ul = curr_tag.parent();
+                  console.log(li_curr);
+                  if(li_curr >= li_limit) parent_ul.scrollTop(parent_ul.scrollTop()+39.5);
+                  else li_curr++;
+
+                  $(this).val(curr_tag.text());
+                  if(curr_idx < all_tag.length) curr_idx++;
+              }
+          });
+          $('#input_' + keyword).on('keyup', function (evt) {
+              if (evt.keyCode != 13 && evt.keyCode != 38 && evt.keyCode != 40) {
+                  var text = $(this).val();
+                  $('#tag_wrapper_' + keyword).html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul_' + keyword + '"></ul>');
+                  for (var i = 0; i < arr.length; i++) {
+                      if (arr[i] !== '' && arr[i].includes(text)) $('#tag_wrapper_ul_' + keyword).append('<li class="tag_list" id="' + keyword + '_tag_' + i + '">' + arr[i] + '</li>');
+                  }
+                  if ($('#tag_wrapper_ul_' + keyword + '> li').length == 0) $('#tag_wrapper_ul_' + keyword).append('<li class="tag_list">검색된 결과가 없습니다.</li>');
+                  $('#tag_wrapper_' + keyword).slideDown(200);
+                  showTagWrapperFunc();
+              }
           });
       }
 
-      var tag_idx_ = 0;
-      $('#input_tag').on('focus', function () {
-
-          $('#tag_wrapper').html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul"></ul>');
-          $('#tag_wrapper_ul').append('<li class="tag_list">이 곳을 클릭하면 태그가 입력됩니다.</li>');
-
-          var ul = $('#tag_wrapper_ul > li');
-          ul.on('mouseover',function () {
-              $(this).css('background', '#9E9C9C');
+      // 키워드 태깅 함수
+      function tagging_func() {
+          var tag_idx_ = 0;
+          $('#input_tag').on('focus', function () { showTagWrapperFunc() });
+          $('#input_tag').on('blur', function () {
+              $('#tag_wrapper').html('');
+              $('#tag_wrapper').hide();
           });
-          ul.on('mouseout', function () {
-              $(this).css('background', '#FFFFFF');
+          $('#input_tag').on('keydown', function (evt) {
+              if($('#tag_wrapper').is(':hidden')){
+                  showTagWrapperFunc();
+              }
+              if (evt.keyCode == 13) {
+                  addTagFunc();
+                  $(this).val('');
+                  $('#tag_wrapper').html('');
+                  $('#tag_wrapper').hide();
+                  evt.preventDefault();
+              } else if($(this).val().length == 0) {
+                  $('#tag_wrapper_ul > li')[0].innerText = '태그를 입력해 주세요.';
+              }
           });
-
-          ul.on('mousedown', function () {
+          $('#input_tag').on('keyup', function (evt) {
+              if (evt.keyCode != 13) {
+                  var data = $(this).val();
+                  $('#tag_wrapper_ul > li')[0].innerText = "\"" + data + "\" [Enter]키를 누르면 태그가 입력됩니다.";
+              }
+          });
+          function addTagFunc() {
               var text = $('#input_tag').val();
 
               if(text.length > 0){
-                $('#multi_select_ul').append('<li class="selected_tag_list" id="selected_tag_list_'+tag_idx_+'">'+text+'<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_'+tag_idx_+'"><span aria-hidden="true">&times;</span></button></li>');
+                  $('#multi_select_ul').append('<li class="selected_tag_list" id="selected_tag_list_'+tag_idx_+'">'+text+'<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_'+tag_idx_+'"><span aria-hidden="true">&times;</span></button></li>');
 
-                $('#tag_close_btn_'+tag_idx_).on('click', function () {
-                    $(this).parent().remove();
-                    console.log($(this).parent());
-                });
-                $('#input_tag').val('');
-                tag_idx_++;
+                  $('#tag_close_btn_'+tag_idx_).on('click', function () {
+                      $(this).parent().remove();
+                      console.log($(this).parent());
+                  });
+                  $('#input_tag').val('');
+                  tag_idx_++;
               }
-          });
-      });
+          }
+          function showTagWrapperFunc(){
+              $('#tag_wrapper').html('<ul class="tag_wrapper_ul" id="tag_wrapper_ul"></ul>');
+              $('#tag_wrapper_ul').append('<li class="tag_list">태그를 입력해주세요.</li>');
+              $('#tag_wrapper').slideDown(200);
 
-      $('#input_tag').on('blur', function () {
-          $('#tag_wrapper').html('');
-      });
-      $('#input_tag').on('keyup', function () {
-          var data = $(this).val();
-          var a = $('#tag_wrapper_ul > li')[0].innerText = "\"" + data + "\" 이 곳을 클릭하면 태그가 입력됩니다.";
-      });
+              var ul = $('#tag_wrapper_ul > li');
+
+              ul.on('mousedown', function () { addTagFunc() });
+          }
+      }
 
       $('#artwork_regist_submit_btn').on('click', function (e) {
           e.preventDefault();
@@ -364,7 +464,8 @@
           var med = $('#multi_select_ul_med > li');
           var tag = $('#multi_select_ul > li');
 
-          if(mat.length === 0){
+          if($('#filePath').val().length === 0) alert('이미지 추가해줭');
+          else if(mat.length === 0){
               alert('재료 입력해줭');
           } else if (med.length === 0) {
               alert('도구 입력해줭');

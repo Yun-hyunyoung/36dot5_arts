@@ -24,5 +24,9 @@ router.get('/clause',function(req, res){
 router.get('/introduce',function(req, res){
   res.render('introduce');
 });
-
+router.get('/inquire',function(req, res){
+  res.render('inquire',{  title: 'Express',
+    session_email: req.session.email
+});
+});
 module.exports = router;

@@ -18,5 +18,4 @@ router.post('/ajax', function (req, res) {
     });
 });
 
-
 module.exports = router;

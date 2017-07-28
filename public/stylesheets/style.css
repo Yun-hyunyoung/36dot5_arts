@@ -6019,6 +6019,8 @@ button.close {
   line-height: 1.42857143;
 }
 .modal-body {
+  margin-left: 30px;
+  margin-right: 30px;
   position: relative;
   padding: 15px;
 }
@@ -6046,7 +6048,7 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 300px;
+    width: 400px;
     margin: 30px auto;
   }
   .modal-content {

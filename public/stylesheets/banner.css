@@ -6,7 +6,6 @@
   filter: grayscale(30%);
   height: 25rem;
 }
-
 #banner {
   text-align: center;
   width:100%;
@@ -24,7 +23,7 @@
 }
 #banner .banner-text {
   margin:0 auto ;
-  background-color: rgba(100, 100, 100, 0.3);
+  background-color: rgba(100, 100, 100, 0.4);
   border-radius: 1rem;
 }
 .count>h3{

@@ -5,6 +5,8 @@
     </header>
     <ul>
         <%artworks.forEach(function(artwork, idx){%>
+          <% if (idx < 4){%>
+
         <li class = "img_li">
           <div class="img_box">
           <div class="_img">
@@ -25,6 +27,7 @@
                 </p>
             </div>
         </li>
+        <%}%>
         <%})%>
     </ul>
 </section>

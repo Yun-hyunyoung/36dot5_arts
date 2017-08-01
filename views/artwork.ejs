@@ -130,25 +130,38 @@
     이러이러하니 좀 사보셔 이러리어케 좋은거임</h3>
       </div>
     </section>
-    </div>
-    <div id="detail-wrapper">
-      <h2>'<%= nickname %>'님의 다른 작품</h2>
-      <section class='other-pic'>
-        <%if(other_artworks[0] !== undefined) {%>
-          <%other_artworks.forEach(function (artwork, idx) {%>
-            <div class="other-picture">
-              <h2> <%= artwork.title %></h2>
-              <a href="../artwork/<%=artwork._id%>"><img src='/images/artworks/<%=artwork.image%>'></a>
-              <h3>카테고리 : <%= artwork.category %></h3>
-              <h3>가격 : <%= artwork.price %>원</h3>
-              <h3>크기 : <%= artwork.width %> x <%= artwork.height %> x <%= artwork.depth %></h3>
-            </div>
-            <%}) } else {%>
-              <div>
-                <%=nickname%>님의 다른 작품이 없습니다.</div>
-              <%}%>
-      </section>
-    </div>
+
+  <section class="content block-list">
+    <header>
+      <h3>'<%=nickname%>' 님의 다른 작품</h3>
+      <a href="#" class="all_link">더 보기</a>
+    </header>
+      <%if(other_artworks[0] !== undefined) {%>
+    <ul>
+        <%other_artworks.forEach(function(artwork, idx){%>
+        <%if (idx < 4){%>
+      <li>
+        <a href="/artwork/<%=artwork._id%>">
+          <img src="/images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
+        </a>
+        <div class="excerpt">
+          <a>
+            <h3><%=artwork.title%></h3>
+          </a>
+          <p>
+          <p>재료 : <%=artwork.material%>/<%=artwork.medium%></p>
+          <p>크기 : <%=artwork.width%>X<%=artwork.height%>X<%=artwork.depth%>(cm)</p>
+          <p>가격 : <%=artwork.price%>원</p>
+          </p>
+        </div>
+      </li>
+        <%}%>
+        <%})%>
+    </ul>
+    <%} else{%>
+    <div><%=nickname%>님의 다른 작품이 없습니다.</div>
+    <%}%>
+  </section>
 </body>
 
 </html>

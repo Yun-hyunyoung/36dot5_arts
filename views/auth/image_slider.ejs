@@ -1,140 +1,25 @@
-<link href="stylesheets/image_slider.css" rel="stylesheet">
-
-
-<!-- REMOVE Analytics Code -->
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-950065-32']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
-<!-- Analytics Code -->
-<!--<div class="container">
-	<div class="row">
-
-			<div class="well">
-
-            &lt;!&ndash; Carousel
-            ================================================== &ndash;&gt;
-
-            <h4>최근 등록된 작품</h4>
-            <hr>
-              <div id=control-box>
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev"><img src="image/left.jpg" height="30px" width="30px" class="fa fa-chevron-left fa-2x" ></img></a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next"><img src="image/right.jpg" height="30px" width="30px" class="fa fa-chevron-right fa-2x"></img></a>
-            </div>
-            <div id="myCarousel" class="carousel slide">
-
-                <div class="carousel-inner">
-                    <%artworks.forEach(function(artwork, idx){%>
-                    <%if (idx%4==0){%>
-                    <div class="item
-                        <%if(idx/4==0){ %><%=' active'%><%}%>">
-                        <div class="row">
-                    <%}%>
-                            <div class="col-md-3"><a href="artwork/<%=artwork._id%>" class="thumbnail"><img class="img-responsive" src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>"></a>
-                                <div><%=artwork.title%>(<%=artwork.material%>/<%=artwork.medium%>)</div>
-                                <div><%=artwork.width%>X<%=artwork.height%>X<%=artwork.depth%></div>
-                                <div><%=artwork.price%>원</div>
-                            </div>
-                            <%if (idx%4==3){%>
-
-                    </div>
-                  </div>
-                    <%}})%>
-                </div>
-
-                <ol class="<carousel></carousel>-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-
-            </div>&lt;!&ndash; End Carousel &ndash;&gt;
-
-        </div>&lt;!&ndash; End Well &ndash;&gt;
-
-    </div>
-</div>-->
 <section class="content block-list">
     <header>
         <h3>최근 그림</h3>
         <a href="#" class="all_link">더 보기</a>
     </header>
     <ul>
+        <%artworks.forEach(function(artwork, idx){%>
         <li>
-            <a href="#">
-                <img src="images/artworks/CT39FjrOvpi7xI4Ho2rbuNaq.jpg">
+            <a href="artwork/<%=artwork._id%>">
+                <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
             </a>
             <div class="excerpt">
                 <a>
-                    <h3>제목</h3>
+                    <h3><%=artwork.title%></h3>
                 </a>
                 <p>
-                    <a>솰라솰라</a>
-                    <a>솰라솰라2</a>
-                    <a>솰라솰라3</a>
+                    <p>재료 : <%=artwork.material%>/<%=artwork.medium%></p>
+                    <p>크기 : <%=artwork.width%>X<%=artwork.height%>X<%=artwork.depth%>(cm)</p>
+                    <p>가격 : <%=artwork.price%>원</p>
                 </p>
             </div>
         </li>
-        <li>
-            <a href="#">
-                <img src="images/artworks/CT39FjrOvpi7xI4Ho2rbuNaq.jpg">
-            </a>
-            <div class="excerpt">
-                <a>
-                    <h3>제목</h3>
-                </a>
-                <p>
-                    <a>솰라솰라</a>
-                    <a>솰라솰라2</a>
-                    <a>솰라솰라3</a>
-                </p>
-            </div>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/artworks/CT39FjrOvpi7xI4Ho2rbuNaq.jpg">
-            </a>
-            <div class="excerpt">
-                <a>
-                    <h3>제목</h3>
-                </a>
-                <p>
-                    <a>솰라솰라</a>
-                    <a>솰라솰라2</a>
-                    <a>솰라솰라3</a>
-                </p>
-            </div>
-        </li>
-        <li>
-            <a href="#">
-                <img src="images/artworks/CT39FjrOvpi7xI4Ho2rbuNaq.jpg">
-            </a>
-            <div class="excerpt">
-                <a>
-                    <h3>제목</h3>
-                </a>
-                <p>
-                    <a>솰라솰라</a>
-                    <a>솰라솰라2</a>
-                    <a>솰라솰라3</a>
-                </p>
-            </div>
-        </li>
+        <%})%>
     </ul>
 </section>
-<script src="http://codeorigin.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script>
-	$('#myCarousel').carousel({
-		interval:   4000
-	});
-</script>

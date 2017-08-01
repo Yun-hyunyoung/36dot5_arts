@@ -1,4 +1,4 @@
-body { padding-top: 50px; }
+/*body { padding-top: 50px; }*/
 
 /*#####################
 Additional Styles (required)
@@ -11,7 +11,7 @@ Additional Styles (required)
 .row{
   padding-top: 2rem;
   width: 100%;
-    margin: 0 auto;
+
 }
 .well h4{
   padding-bottom: 2rem;
@@ -37,6 +37,7 @@ Additional Styles (required)
 }
 .carousel-indicators {
 	bottom:-30px;
+
 }
 .carousel-indicators li {
 	border-radius:0;
@@ -52,7 +53,7 @@ Additional Styles (required)
 	border-color:#3276b1;
 }
 .carousel-inner{
-  height:auto;
+  height:400px;
 }
 .container{
 

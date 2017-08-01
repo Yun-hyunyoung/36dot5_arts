@@ -8,15 +8,83 @@
      <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
      <link href="stylesheets/reset.css" rel="stylesheet">
      		<!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
-     <link href="stylesheets/style.css" rel="stylesheet">
 
+     <link href="stylesheets/china.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
   <title><%= title %></title>
     <% include auth/favicon.ejs %>
 
   </head>
   <body>
-    <% include auth/nav.ejs %>
+  <nav class = "aux">
+    <ul class = "social-media">
+      <li><a href="#">
+        <span class = " fa fa-twitter">
+        </span>
+      </a></li>
+      <li><a href="#">
+        <span class = " fa fa-facebook">
+        </span>
+      </a></li>
+      <li><a href="#">
+        <span class = " fa fa-instagram">
+        </span>
+      </a></li>
+    </ul>
+    <ul>
+      <li>
+        <form method="GET" action="#" class ="search">
+           <input type="text" name="query" placeholder="Search">
+           <input type="submit" value="Search">
+        </form>
+      </li>
+      <% if(session_email === undefined){%>
+      <li>
+          <a href="" data-target="#myModal_login" data-toggle="modal">
+              <span id="link_login">Sign in</span>
+          </a>
+      </li>
+      <li>
+          <a href="" data-target="#myModal_regist" data-toggle="modal">
+              <span id="link_regist">Sign up</span>
+          </a>
+      </li>
+    <%}%>
+    </ul>
+
+  </nav>
+  <header class = "primary">
+    <div class="logo">
+      <a href="/">
+        <img src="../image/picsell_logo.png" alt="logo">
+      </a>
+    </div>
+    <nav class="primary">
+        <ul>
+          <li>
+              <a href="/t"><span >HOME</a>
+          </li>
+          <li>
+              <a href="/board_list/board_list"><span >NOTICE</a>
+          </li>
+          <li>
+              <a href="/board_list/board_list"><span >BOARD</a>
+          </li>
+          <% if(session_email != undefined) {%>
+
+            <li >
+                <a href="/artwork/regist"><span >작품등록</span></a>
+            </li>
+            <li >
+                <a href="/auth/logout"><span >로그아웃</span></a>
+            </li>
+            <%}%>
+        </ul>
+    </nav>
+  </header>
+
+
     <% include auth/modal.ejs %>
     <% include auth/banner.ejs %>
 

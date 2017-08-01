@@ -1,56 +1,66 @@
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="/"><img src="../image/picsell_logo.png" alt="logo" height="50px" width="180px"></a>
+<nav class = "aux">
+    <ul class = "social-media">
+        <li><a href="#">
+        <span class = " fa fa-twitter">
+        </span>
+            </a></li>
+        <li><a href="#">
+        <span class = " fa fa-facebook">
+        </span>
+            </a></li>
+        <li><a href="#">
+        <span class = " fa fa-instagram">
+        </span>
+            </a></li>
+    </ul>
+    <ul>
+        <li>
+            <form method="GET" action="#" class ="search">
+                <input type="text" name="query" placeholder="Search">
+                <input type="submit" value="Search">
+            </form>
+        </li>
+        <% if(session_email === undefined){%>
+        <li>
+            <a href="" data-target="#myModal_login" data-toggle="modal">
+                <span id="link_login">Sign in</span>
+            </a>
+        </li>
+        <li>
+            <a href="" data-target="#myModal_regist" data-toggle="modal">
+                <span id="link_regist">Sign up</span>
+            </a>
+        </li>
+        <%}%>
+    </ul>
 
-            <!-- <a class="navbar-brand topnav" href="/"><%= title %></a> -->
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-              <li>
-                  <a href="/board_list/board_list"><span >게시판</span></a>
-              </li>
-                <% if(session_email === undefined) {%>
-                <li>
-                    <a href="" data-target="#myModal_regist" data-toggle="modal">
-                        <span id="link_regist">회원가입</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" data-target="#myModal_login" data-toggle="modal">
-                        <span id="link_login">로그인</span>
-                    </a>
-                </li>
-                <%} else {%>
-                <li >
-                    <a href="/artwork/regist"><span >작품등록</span></a>
-                </li>
-                <li >
-                    <a href="/auth/logout"><span >로그아웃</span></a>
-                </li>
-                <%}%>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
 </nav>
+<header class = "primary">
+    <div class="logo">
+        <a href="/">
+            <img src="../image/picsell_logo.png" alt="logo">
+        </a>
+    </div>
+    <nav class="primary">
+        <ul>
+            <li>
+                <a href="/"><span>HOME</span></a>
+            </li>
+            <li>
+                <a href="/board_list/board_list"><span >NOTICE</span></a>
+            </li>
+            <li>
+                <a href="/board_list/board_list"><span >BOARD</span></a>
+            </li>
+            <% if(session_email != undefined) {%>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-103554179-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+            <li >
+                <a href="/artwork/regist"><span >작품등록</span></a>
+            </li>
+            <li >
+                <a href="/auth/logout"><span >로그아웃</span></a>
+            </li>
+            <%}%>
+        </ul>
+    </nav>
+</header>

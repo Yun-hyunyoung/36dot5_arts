@@ -1,26 +1,26 @@
-#banner-background{
+#banner-background {
   padding-top: 10rem;
-    background-size:cover;
-  height: 40rem;
+  background-image: url(../image/background4.jpg);
+  background-position: center center;
+  background-size: cover;
+  filter: grayscale(30%);
+  height: 25rem;
 }
 
-#banner{
-    text-align: center;
-    background-image: url(../image/background2.jpg);
-      background-size:1500px;
+#banner {
+  text-align: center;
+  width:100%;
 }
 #banner .count {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   text-align: center;
-  background-color: rgba(100,100,100,0.3);
+  background-color: #ffffff;
   color: rgba(255,255,255,0.7);
   display: flex;
-    /*font-family: 'Jeju Hallasan', serif;*/
 }
 #banner .banner-text h1,p{
   color: rgba(255,255,255,0.9);
-  /*font-family: 'Jeju Hallasan', serif;*/
 }
 #banner .banner-text {
   margin:0 auto ;
@@ -29,4 +29,5 @@
 }
 .count>h3{
     margin: 0 auto;
+  color: #000000;
 }

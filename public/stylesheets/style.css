@@ -19,12 +19,6 @@ a {
   text-align: center;
   color: rgba(255,255,255,0.4);
 }
-body {
-  margin: 0;
-  padding: 0px;
-  background-color: white;
-  background-size:cover;
-}
 #wrapper{
   padding-top:4rem;
   padding-right: 2rem;
@@ -6834,12 +6828,6 @@ button.close {
     display: none !important;
   }
 }
-/* Global */
-body {
-    background: #3399cc;
-    padding: 40px;
-}
-
 img { max-width:100%; }
 
 a {
@@ -6926,11 +6914,6 @@ a {
     .caption {
     word-break: break-all;
     }
-}
-body{
-  background-color: white;
-  max-width: 1300px;
-  margin:0 auto;
 }
 
 /*# sourceMappingURL=bootstrap.css#banner .count{

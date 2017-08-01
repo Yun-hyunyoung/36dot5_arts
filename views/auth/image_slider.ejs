@@ -5,6 +5,7 @@
     </header>
     <ul>
         <%artworks.forEach(function(artwork, idx){%>
+            <% if (idx < 4){%>
         <li>
             <a href="artwork/<%=artwork._id%>">
                 <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
@@ -20,6 +21,7 @@
                 </p>
             </div>
         </li>
+        <%}%>
         <%})%>
     </ul>
 </section>

@@ -5,10 +5,15 @@
     </header>
     <ul>
         <%artworks.forEach(function(artwork, idx){%>
-        <li>
-            <a href="artwork/<%=artwork._id%>">
+        <li class = "img_li">
+          <div class="img_box">
+          <div class="_img">
+
+          <a href="artwork/<%=artwork._id%>">
                 <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
             </a>
+            </div>
+            </div>
             <div class="excerpt">
                 <a>
                     <h3><%=artwork.title%></h3>
@@ -23,3 +28,18 @@
         <%})%>
     </ul>
 </section>
+
+<style media="screen">
+
+._img>img{
+  max-height: 150px;
+\
+}
+  .img_box{
+    height: 280px;
+    display:table-cell;
+    vertical-align: middle;
+  background-color: rgba(9, 9, 9, 0.03);
+\
+  }
+</style>

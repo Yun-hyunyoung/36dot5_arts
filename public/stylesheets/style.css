@@ -2277,6 +2277,7 @@ article .post-content h6 {
         float: left;
         width: 23.5%;
         margin: 0 0 0 0;
+
     }
     @media -sass-debug-info{filename{}line{font-family:\00003798}}
     .block-list li:nth-child(4n+3) {

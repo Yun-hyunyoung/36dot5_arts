@@ -12,7 +12,7 @@ var image = require('./routes/image');
 var email = require('./routes/sendemail');
 var board_list = require('./routes/board_list')
 var ajax = require('./routes/ajax');
-
+var all_artworks = require('./routes/all_artworks');
 var app = express();
 
 // express-session setup
@@ -58,6 +58,7 @@ app.use('/artwork', artwork);
 app.use('/image', image);
 app.use('/board_list',board_list);
 app.use('/ajax',ajax);
+app.use('/all_artworks',all_artworks);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

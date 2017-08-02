@@ -107,7 +107,7 @@
             <div class=button-div>
 
               <% include auth/modal.ejs %>
-                <a href="#myModal_email" data-target="#myModal_email" data-toggle="modal" class="myButton"> 메일보내기</a>
+                <a href="#myModal_email" data-target="#myModal_email" data-toggle="modal" class="myButton" > 메일보내기</a>
                 <a href="#" class="myButton">찜하기</a>
                 <form action="/artwork/delete" method="post">
                   <input type="text" name="email_id" value="<%=session_email%>">

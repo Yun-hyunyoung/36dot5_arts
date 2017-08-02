@@ -5,11 +5,15 @@
     </header>
     <ul>
         <%artworks.forEach(function(artwork, idx){%>
-            <% if (idx < 4){%>
-        <li>
+          <% if (idx < 4){%>
+
+        <li class = "img_li">
+          <div class="img_box">
+
             <a href="artwork/<%=artwork._id%>">
-                <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
+                <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>" class = " slider_img">
             </a>
+            </div>
             <div class="excerpt">
                 <a>
                     <h3><%=artwork.title%></h3>
@@ -25,3 +29,17 @@
         <%})%>
     </ul>
 </section>
+
+<style media="screen">
+
+  .img_box{
+    height: 280px;
+    width: 1%;
+      text-align: center;
+    display:table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+
+  }
+</style>

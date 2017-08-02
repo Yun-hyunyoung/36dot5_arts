@@ -31,6 +31,7 @@
 
 .detail-photo {
     background-size: cover;
+    padding-top: 70px;
 }
 
 .other-pic {
@@ -55,12 +56,14 @@ tr {
 #detail-info {
     display: flex;
     margin: 0 auto;
+        border: 3px solid rgba(90, 90, 90, 0.2);
 }
 
 #detail-section {
-    border: 3px solid rgba(90, 90, 90, 0.2);
+
     max-width: 1000px;
     margin: 0 auto;
+    padding-top: 20px;
 }
 
 #detail-wrapper .other-pic > div {

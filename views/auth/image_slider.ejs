@@ -9,12 +9,10 @@
 
         <li class = "img_li">
           <div class="img_box">
-          <div class="_img">
 
-          <a href="artwork/<%=artwork._id%>">
-                <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
+            <a href="artwork/<%=artwork._id%>">
+                <img src="images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>" class = " slider_img">
             </a>
-            </div>
             </div>
             <div class="excerpt">
                 <a>
@@ -34,19 +32,14 @@
 
 <style media="screen">
 
-._img>img{
-  max-height: 150px;
-
-}
   .img_box{
     height: 280px;
-    min-width:200px;
-width: auto;
+    width: 1%;
       text-align: center;
     display:table-cell;
     vertical-align: middle;
-  background-color: rgba(9, 9, 9, 0.5);
-
+    padding-left: 10px;
+    padding-right: 10px;
 
   }
 </style>

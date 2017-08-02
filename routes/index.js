@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
                 artworks[artworks.length] = artwork[j];
             }
         }
+        artworks.sort(function(a, b){ return b.regist_date - a.regist_date; });
         /*console.log(artworks);*/
         console.log(req.session.email);
         res.render('index', { title: '36.5 Arts', nickname: users.nickname, session_email: req.session.email, artworks : artworks});

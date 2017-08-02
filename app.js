@@ -12,6 +12,7 @@ var image = require('./routes/image');
 var email = require('./routes/sendemail');
 var board_list = require('./routes/board_list')
 var ajax = require('./routes/ajax');
+
 var app = express();
 
 // express-session setup

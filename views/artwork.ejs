@@ -2,166 +2,186 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <link rel='stylesheet' href='/stylesheets/reset.css' />
-  <link rel='stylesheet' href='/stylesheets/detail.css' />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/reset.css'/>
+    <link rel='stylesheet' href='/stylesheets/detail.css'/>
 
-  <title>
-    <%= artwork.title %> -
-      <%= title %>
-  </title>
+    <title>
+        <%= artwork.title %> -
+        <%= title %>
+    </title>
 </head>
 
 
 <body>
-  <% include auth/nav.ejs %>
+<% include auth/nav.ejs %>
 
-    <section id='detail-section'>
-      <div id='detail-info'>
-        <div class='detail-photo'>
-          <div id="myslider" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="item active">
-                <img src="../image/arts/01.jpg" width="100%">
-              </div>
-              <div class="item">
-                <img src="../image/arts/02.jpg" width="100%">
-              </div>
-              <div class="item">
-                <img src="../image/arts/03.jpg" width="100%">
-              </div>
+<section id='detail-section'>
+    <div id='detail-info' class="container">
+        <div class="row">
+            <div class="col-lg-12 detail-title">
+                <h3>작품 상세보기</h3>
+                <hr>
             </div>
-            <a class="carousel-control left" href="#myslider" data-slide="prev">
-              <img class="left-key" src="../image/left.jpg"></img>
-            </a>
-            <a class="carousel-control right" href="#myslider" data-slide="next">
-              <img class="right-key" src="../image/right.jpg"></img>
-            </a>
-          </div>
-        </div>
-        <form>
-          <div class='detail-text'>
-            <div class='title'>
-              <b><%= artwork.title %></b>
+            <div class='detail-photo col-md-6 col-sm-12' style="vertical-align: middle;">
+                <img src="/images/artworks/<%= artwork.image %>">
+                <!--<div id="myslider" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="../image/arts/01.jpg" width="100%">
+                    </div>
+                    <div class="item">
+                      <img src="../image/arts/02.jpg" width="100%">
+                    </div>
+                    <div class="item">
+                      <img src="../image/arts/03.jpg" width="100%">
+                    </div>
+                  </div>
+                  <a class="carousel-control left" href="#myslider" data-slide="prev">
+                    <img class="left-key" src="../image/left.jpg"></img>
+                  </a>
+                  <a class="carousel-control right" href="#myslider" data-slide="next">
+                    <img class="right-key" src="../image/right.jpg"></img>
+                  </a>
+                </div>-->
             </div>
-            <table>
-              <tbody>
-                <tr>
-                  <th>카테고리</th>
-                  <td>
-                    <%= artwork.category %>
-                  </td>
-                </tr>
-                <tr>
-                  <th>재료</th>
-                  <td>
-                    <%= artwork.material %>
-                  </td>
-                </tr>
-                <tr>
-                  <th>도구</th>
-                  <td>
-                    <%= artwork.medium %>
-                  </td>
-                </tr>
-                <tr>
-                  <th>크기</th>
-                  <td>
-                    <%= artwork.width %> x
-                      <%= artwork.height %> x
-                        <%= artwork.depth %>
-                  </td>
-                </tr>
+            <div class='detail-text col-md-6 col-sm-12'>
+                <div class='title'>
+                    <b><%= artwork.title %></b>
+                </div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>카테고리</th>
+                        <td>
+                            <%= artwork.category %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>재료</th>
+                        <td>
+                            <%= artwork.material %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>도구</th>
+                        <td>
+                            <%= artwork.medium %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>크기</th>
+                        <td>
+                            <%= artwork.width %> x
+                            <%= artwork.height %> x
+                            <%= artwork.depth %>
+                        </td>
+                    </tr>
 
-                <tr>
-                  <th>키워드</th>
-                  <td>
-                    <%= artwork.keyword %>
-                  </td>
-                </tr>
-                <tr>
-                  <th>포장</th>
-                  <td>
-                    <%= artwork.packaging %>
-                  </td>
-                </tr>
-                <tr>
-                  <th>주소</th>
-                  <td>
-                    <%= artwork.address %>
-                  </td>
-                </tr>
+                    <tr>
+                        <th>키워드</th>
+                        <td>
+                            <%= artwork.keyword %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>포장</th>
+                        <td>
+                            <%= artwork.packaging %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td>
+                            <%= artwork.address %>
+                        </td>
+                    </tr>
+                    <hr class="detail-hr">
+                    <tr>
+                        <th>가격</th>
+                        <td>
+                            <%= artwork.price %>원
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
                 <hr class="detail-hr">
-                <tr>
-                  <th>가격</th>
-                  <td>
-                    <%= artwork.price %>원</td>
-                </tr>
-              </tbody>
-            </table>
-            <hr class="detail-hr">
-            <div class=button-div>
-
-              <% include auth/modal.ejs %>
-                <a href="#myModal_email" data-target="#myModal_email" data-toggle="modal" class="myButton" > 메일보내기</a>
-                <a href="#" class="myButton">찜하기</a>
-                <form action="/artwork/delete" method="post">
-                  <input type="text" name="email_id" value="<%=session_email%>">
-                  <input type="text" name="artwork_id" value= "<%=artwork._id%>">
-                  <input type="submit" value="글삭제">
-                </form>
+                <div class="button-div row">
+                    <% include auth/modal.ejs %>
+                    <div class="col-md-4 col-xs-12 detail-button">
+                        <a href="#myModal_email" data-target="#myModal_email" data-toggle="modal" class="button">
+                            메일보내기</a>
+                    </div>
+                    <div class="col-md-4 col-xs-12 detail-button">
+                        <a href="#" class="button">찜하기</a>
+                    </div>
+                    <div class="col-md-4 col-xs-12 detail-button">
+                        <form action="/artwork/delete" method="post">
+                            <input type="text" name="email_id" value="<%= session_email %>" hidden>
+                            <input type="text" name="artwork_id" value="<%= artwork._id %>" hidden>
+                            <button class="button" value="글삭제" style="width: 100%;">글삭제</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </div>
-        </form>
-      </div>
-      <div class="description">
-        <p id="line"></p>
-        <h2 class="description_text">작가소개</h2>
-        <h3> 이러이러한 작가 뭐뭐한 작가입니다</h3>
-      </div>
-      <div class="description">
-        <p id="line"></p>
-        <h2 class="description_text">description </h2>
-        <h3> <%= artwork.description %> 이런 이러러어어어한 작품인데
-    이러이러하니 좀 사보셔 이러리어케 좋은거임</h3>
-      </div>
-    </section>
-
-  <section class="content block-list">
-    <header>
-      <h3>'<%=nickname%>' 님의 다른 작품</h3>
-      <a href="#" class="all_link">더 보기</a>
-    </header>
-      <%if(other_artworks[0] !== undefined) {%>
-    <ul>
-        <%other_artworks.forEach(function(artwork, idx){%>
-        <%if (idx < 4){%>
-      <li>
-        <a href="/artwork/<%=artwork._id%>">
-          <img src="/images/artworks/<%=artwork.image%>" alt="Thumb<%=idx+1%>">
-        </a>
-        <div class="excerpt">
-          <a>
-            <h3><%=artwork.title%></h3>
-          </a>
-          <p>
-          <p>재료 : <%=artwork.material%>/<%=artwork.medium%></p>
-          <p>크기 : <%=artwork.width%>X<%=artwork.height%>X<%=artwork.depth%>(cm)</p>
-          <p>가격 : <%=artwork.price%>원</p>
-          </p>
+            <div class="description col-md-12 col-sm-12">
+                <p id="line"></p>
+                <h2 class="description_text">작가소개</h2>
+                <h3> 이러이러한 작가 뭐뭐한 작가입니다</h3>
+            </div>
+            <div class="description col-md-12 col-sm-12">
+                <p id="line"></p>
+                <h2 class="description_text">description </h2>
+                <h3> <%= artwork.description %> 이런 이러러어어어한 작품인데
+                    이러이러하니 좀 사보셔 이러리어케 좋은거임</h3>
+            </div>
         </div>
-      </li>
-        <%}%>
-        <%})%>
+    </div>
+</section>
+
+<section class="content block-list">
+    <header>
+        <h3 style="font-size: 20px; font-weight: bold;">'<%= nickname %>' 님의 다른 작품</h3>
+        <% if(other_artworks.length > 4){ %>
+        <a href="#" class="all_link">더 보기</a>
+        <% } %>
+    </header>
+    <% if(other_artworks[0] !== undefined) { %>
+    <ul>
+        <% other_artworks.forEach(function(artwork, idx){ %>
+        <% if (idx < 4){ %>
+        <li class="img_li">
+            <div class="img_box">
+                <a href="/artwork/<%= artwork._id %>">
+                    <img src="/images/artworks/<%= artwork.image %>" alt="Thumb<%= idx + 1 %>" class="slider_img">
+                </a>
+            </div>
+            <div class="excerpt">
+                <a>
+                    <h3><%= artwork.title %></h3>
+                </a>
+                <p>
+                <p>재료 : <%= artwork.material %>/<%= artwork.medium %></p>
+                <p>크기 : <%= artwork.width %>X<%= artwork.height %>X<%= artwork.depth %>(cm)</p>
+                <p>가격 : <%= artwork.price %>원</p>
+                </p>
+            </div>
+
+        </li>
+        <% } %>
+        <% }) %>
     </ul>
-    <%} else{%>
-    <div><%=nickname%>님의 다른 작품이 없습니다.</div>
-    <%}%>
-  </section>
+    <% } else{ %>
+    <div><%= nickname %>님의 다른 작품이 없습니다.</div>
+    <% } %>
+</section>
+<% include auth/footer.ejs %>
 </body>
 
 </html>

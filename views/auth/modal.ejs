@@ -1,7 +1,7 @@
 <!-- login - Modal -->
 <div class="modal fade" id="myModal_login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content col-sm-8 col-sm-offset-2">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">로그인</h4>
@@ -11,10 +11,16 @@
           <section class="login-form">
             <div id="authValidCheck"></div>
             <form action="/auth/login" method="post" role="login">
-              <input type="email" name="email" id="login-email" placeholder="이메일" required class="form-control input-lg" />
-              <input type="password" name="password" id="login-password" placeholder="비밀번호" required class="form-control input-lg" />
+              <div class="form-group">
+                <label for="e-mail" class="control-label">이메일</label>
+                <input type="email" name="email" id="login-email" placeholder="example@gmail.com" required class="form-control input-lg" />
+              </div>
+              <div class="form-group">
+                <label for="password" class="control-label">비밀번호</label>
+                <input type="password" name="password" id="login-password" required class="form-control input-lg" />
+              </div>
               <hr>
-              <button type="submit" value="Login" id="btn-login" class="btn btn-lg btn-primary btn-block">로그인</button>
+              <input type="submit" value="로그인" id="btn-login" class="btn btn-lg btn-block">
             </form>
           </section>
         </section>
@@ -34,7 +40,7 @@
 <!-- regist - Modal -->
 <div class="modal fade" id="myModal_regist" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content col-sm-8 col-sm-offset-2">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">회원가입</h4>
@@ -43,18 +49,33 @@
         <section class="container_login">
           <section class="login-form">
             <form method="post" action="/auth/regist" role="regist" name="regist">
-              <input id="email-valid-check" class="form-control input-lg" type="email" name="email" autofocus placeholder="이메일" required>
+              <div class="form-group">
+                <label for="e-mail" class="control-label">이메일</label>
+              <input id="email-valid-check" class="form-control input-lg" type="email" name="email" autofocus placeholder="example@gmail.com">
+              </div>
               <div id="check_email"></div>
-              <input id="password-valid-check" class="form-control input-lg" type="password" name="password" placeholder="비밀번호" required>
+              <div class="form-group">
+                <label for="password" class="control-label">비밀번호</label>
+              <input id="password-valid-check" class="form-control input-lg" type="password" name="password">
                 <div id="check_password"></div>
-              <input class="form-control input-lg" type="password" name="password2" placeholder="동일한 비밀번호 입력" required>
-              <input id="nickname-input" class="form-control input-lg" type="text" name="nickname" placeholder="닉네임" required>
-              <input id="major-input" class="form-control input-lg" type="text" name="major" placeholder="전공" required>
+                <input class="form-control input-lg" type="password" name="password2" placeholder="동일한 비밀번호 입력">
+              </div>
+              <div class="form-group">
+                <label for="nickname" class="control-label">닉네임</label>
+              <input id="nickname-input" class="form-control input-lg" type="text" name="nickname" placeholder="닉네임">
+              </div>
+              <div class="form-group">
+                <label for="major" class="control-label">전공</label>
+              <input id="major-input" class="form-control input-lg" type="text" name="major" placeholder="전공">
+              </div>
                 <hr>
               <% include clause2.ejs %>
-                <input type="checkbox" name="ok_use" id="agree" value="y" align="right">
-                <a href="#" id="toggle-clause">이용약관</a>에 동의합니다.
-                <input class="btn btn-lg btn-primary btn-block" type="button" value="확인" onclick="check('agree')" value="회원가입">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="ok_use" id="agree" value="y" align="right"> <a href="#" id="toggle-clause">이용약관</a>에 동의합니다.
+                </label>
+              </div>
+                <input class="btn btn-lg btn-block" id="btn_regist" type="submit" value="회원가입">
             </form>
           </section>
         </section>
@@ -204,31 +225,35 @@
       var regex = /^[a-z0-9_+.-]+@([a-z0-9-]+\.)+[a-z0-9]{2,4}$/;
       return regex.test(data);
   }
+
     $('#toggle-clause').on('click', function () {
         $('#text-clause').toggle("slow");
-    })
+    });
 
-//동의여부 체크
-  function check(id) {
-    var agree = document.getElementById(id);
-    var mail = $('#email-valid-check');
-    var pass = $('#password-valid-check');
-    var nick = $('#nickname-input');
-    var major = $('#major-input');
-
+  $('#btn_regist').on('click', function (e) {
+      var agree = document.getElementById('agree');
+      var mail = $('#email-valid-check');
+      var pass = $('#password-valid-check');
+      var nick = $('#nickname-input');
+      var major = $('#major-input');
 
       if (mail.val().length === 0) {
           mail.addClass('need-input');
+          return false;
       } else if (pass.val().length === 0) {
           pass.addClass('need-input');
+          return false;
       } else if (nick.val().length === 0) {
           nick.addClass('need-input');
+          return false;
       } else if (major.val().length === 0) {
           major.addClass('need-input');
+          return false;
       } else if (!agree.checked) { //동의여부 체크
           alert("약관에 동의하셔야 회원가입을 하실 수 있습니다.");
+          return false;
       } else {
           regist.submit();
       }
-  }
+  });
 </script>

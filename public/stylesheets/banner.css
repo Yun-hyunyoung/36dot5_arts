@@ -10,12 +10,21 @@
   text-align: center;
   width:100%;
 }
+@media only screen and (min-width: 900px) {
+  .count > h3 {
+    font-size: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .count > h3 {
+    font-size: 15px;
+  }
+}
 #banner .count {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
   text-align: center;
-  background-color: #ffffff;
-  color: rgba(255,255,255,0.7);
+  background-color: rgba(204,21,51,0.9);
   display: flex;
 }
 #banner .banner-text h1,p{
@@ -26,7 +35,7 @@
   background-color: rgba(100, 100, 100, 0.4);
   border-radius: 1rem;
 }
-.count>h3{
-    margin: 0 auto;
-  color: #000000;
+.count > h3 {
+  margin: 0 auto;
+  color: #fff;
 }

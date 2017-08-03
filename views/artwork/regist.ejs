@@ -92,17 +92,17 @@
         </div>
         <hr>
         <div class="form-group">
-            <label class="col-sm-2 control-label">크기</label>
-            <div class="col-sm-3">
+            <label class="col-xs-2 control-label">크기</label>
+            <div class="col-xs-3">
                 <input type="text" name="width" placeholder="가로" class="form-control" required>
             </div>
-            <div class="col-sm-3">
+            <div class="col-xs-3">
                 <input type="text" name="height" placeholder="세로" class="form-control" required>
             </div>
-            <div class="col-sm-3">
+            <div class="col-xs-3">
                 <input type="text" name="depth" placeholder="높이" class="form-control" required>
             </div>
-            <label class="col-sm-1 control-label">(cm)</label>
+            <label class="col-xs-1 control-label">(cm)</label>
         </div>
         <hr>
         <div class="form-group">
@@ -159,7 +159,7 @@
         <div class="form-group">
             <div class="col-sm-2"></div>
             <div class="col-sm-10">
-                <input type="submit" id="artwork_regist_submit_btn" class="form-control" value="등록">
+                <input type="submit" id="artwork_regist_submit_btn" class="btn btn-lg btn-block" value="등록">
             </div>
         </div>
 
@@ -272,11 +272,11 @@
     .multi_select_ul {
         list-style-type: none;
         margin: 0;
-        padding: 0;
         padding-top: 5px;
     }
 
     .selected_tag_list {
+        color: #fff;
         cursor: default;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -284,13 +284,13 @@
         user-select: none;
 
         display: inline-block;
-        border: 1px solid #ccc;
+        border: 1px solid #CC1533;
         border-radius: 4px;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-        background-color: #ccc;
+        background-color: #CC1533;
         padding: 4px;
         margin-left: 2px;
-        margin-right: 2px;
+        margin-right: 10px;
     }
 
     .tag_close_btn {
@@ -298,6 +298,12 @@
         margin-right: 2px;
         display: inline;
         cursor: pointer;
+
+        border: 0px;
+        background: #CC1533;
+        float: right;
+        font-size: 21px;
+        color: #fff;
     }
 </style>
 <script>
@@ -323,7 +329,7 @@
                 var tag_idx = $(this)[0].id.substr(8, this.length);
                 var text = this.innerText;
 
-                $('#multi_select_ul_' + keyword).append('<li class="selected_tag_list" id="selected_tag_list_' + keyword + '_' + tag_idx + '">' + text + '<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_' + keyword + '_' + tag_idx + '" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
+                $('#multi_select_ul_' + keyword).append('<li class="selected_tag_list" id="selected_tag_list_' + keyword + '_' + tag_idx + '">' + text + '<button class="tag_close_btn" aria-label="Close" id="tag_close_btn_' + keyword + '_' + tag_idx + '" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
 
                 $('#tag_close_btn_' + keyword + '_' + tag_idx).on('click', function () {
                     var parent = $(this).parent();
@@ -457,7 +463,7 @@
             var text = $('#input_tag').val();
 
             if (text.length > 0) {
-                $('#multi_select_ul').append('<li class="selected_tag_list" id="selected_tag_list_' + tag_idx_ + '">' + text + '<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_' + tag_idx_ + '"><span aria-hidden="true">&times;</span></button></li>');
+                $('#multi_select_ul').append('<li class="selected_tag_list" id="selected_tag_list_' + tag_idx_ + '">' + text + '<button class="tag_close_btn" aria-label="Close" id="tag_close_btn_' + tag_idx_ + '"><span aria-hidden="true">&times;</span></button></li>');
 
                 $('#tag_close_btn_' + tag_idx_).on('click', function () {
                     $(this).parent().remove();

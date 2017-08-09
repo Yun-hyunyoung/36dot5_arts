@@ -2,15 +2,15 @@
  var express = require('express');
 var router = express.Router();
 var email 	= require("emailjs/email");
-
+var fs = require("fs");
 
 router.post('/sendemail', function(req, res) {
 
-  var mail_text = req.body.mail_text
 
   var server 	= email.server.connect({
-     user:    "jinpyo0311",
-     password:"Wksvy124@",
+
+     user:   "id",
+     password:"password",
      host:    "smtp.naver.com",
      port:    465,
      ssl:     true

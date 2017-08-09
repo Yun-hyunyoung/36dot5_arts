@@ -2413,3 +2413,13 @@ p.right {
         word-break: break-all;
     }
 }
+.img_box{
+    height: 280px;
+    width: 1%;
+    text-align: center;
+    display:table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}

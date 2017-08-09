@@ -1,4 +1,4 @@
-<nav class = "aux">
+<nav class="aux">
     <ul class="social-media">
         <li><a href="#">
         <span class=" fa fa-twitter">
@@ -15,12 +15,12 @@
     </ul>
     <ul>
         <li>
-            <form method="GET" action="#" class ="search">
-  
+            <form method="GET" action="#" class="search">
+
                 <input type="submit" value="Search">
             </form>
         </li>
-        <% if(session_email === undefined){%>
+        <% if(session_email === undefined){ %>
         <li>
             <a href="" data-target="#myModal_login" data-toggle="modal">
                 <span id="link_login">Sign in</span>
@@ -31,11 +31,15 @@
                 <span id="link_regist">Sign up</span>
             </a>
         </li>
-        <%}%>
+        <% } else { %>
+        <li>
+            <a href="/auth/logout"><span>Logout</span></a>
+        </li>
+        <% } %>
     </ul>
 
 </nav>
-<header class = "primary">
+<header class="primary">
     <div class="logo">
         <a href="/">
             <img src="../image/picsell_logo.png" alt="logo">
@@ -47,20 +51,17 @@
                 <a href="/"><span>HOME</span></a>
             </li>
             <li>
-                <a href="/board_list/board_list"><span >NOTICE</span></a>
+                <a href="/board_list/board_list"><span>NOTICE</span></a>
             </li>
             <li>
-                <a href="/board_list/board_list"><span >BOARD</span></a>
+                <a href="/board_list/board_list"><span>BOARD</span></a>
             </li>
-            <% if(session_email != undefined) {%>
+            <% if(session_email != undefined) { %>
 
-            <li >
-                <a href="/artwork/regist"><span >작품등록</span></a>
+            <li>
+                <a href="/artwork/regist"><span>작품등록</span></a>
             </li>
-            <li >
-                <a href="/auth/logout"><span >로그아웃</span></a>
-            </li>
-            <%}%>
+            <% } %>
         </ul>
     </nav>
 </header>

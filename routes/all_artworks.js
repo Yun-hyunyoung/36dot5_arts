@@ -12,7 +12,7 @@ var Artwork = require('../models/artwork');
 
 router.get('/all_artworks', function(req, res) {
 
-        res.render('/all_artworks/all_artworks');
+        res.render('all_artworks');
     });
 
 module.exports = router;

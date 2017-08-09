@@ -366,7 +366,7 @@
                     var tag_idx = tagtag.substr(8, curr_tag.length);
                     var text = curr_tag.text();
 
-                    $('#multi_select_ul_' + keyword).append('<li class="selected_tag_list" id="selected_tag_list_' + keyword + '_' + tag_idx + '">' + text + '<button class="close tag_close_btn" aria-label="Close" id="tag_close_btn_' + keyword + '_' + tag_idx + '" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
+                    $('#multi_select_ul_' + keyword).append('<li class="selected_tag_list" id="selected_tag_list_' + keyword + '_' + tag_idx + '">' + text + '<button class="tag_close_btn" aria-label="Close" id="tag_close_btn_' + keyword + '_' + tag_idx + '" aria-label="Close"><span aria-hidden="true">&times;</span></button></li>');
 
                     $('#tag_close_btn_' + keyword + '_' + tag_idx).on('click', function (e) {
                         e.preventDefault();

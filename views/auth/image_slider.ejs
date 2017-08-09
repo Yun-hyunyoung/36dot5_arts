@@ -1,11 +1,10 @@
 <section class="content block-list">
     <header>
-        <h3>최근 그림</h3>
-        <a href="/all_artworks/all_artworks" class="all_link">더 보기</a>
+        <a href="/all_artworks" class="all_link">더 보기</a>
 
         <h3 style="font-size: 20px; font-weight: bold;">최근 등록된 작품</h3>
         <% if(artworks.length > 4){ %>
-        <a href="/all_artworks/all_artworks" class="all_link">더 보기</a>
+        <a href="/all_artworks" class="all_link">더 보기</a>
         <% } %>
 
     </header>
@@ -15,7 +14,7 @@
         <li class="img_li">
             <div class="img_box">
                 <a href="artwork/<%= artwork._id %>">
-                    <img src="images/artworks/<%= artwork.image %>" alt="Thumb<%= idx + 1 %>" class=" slider_img">
+                    <img class="main_image slider_img"src="images/artworks/<%= artwork.image %>" alt="Thumb<%= idx + 1 %>">
                 </a>
             </div>
             <div class="excerpt">

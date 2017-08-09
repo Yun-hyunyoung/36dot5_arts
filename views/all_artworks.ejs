@@ -1,10 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h1>all_artworks</h1>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="../stylesheets/reset.css" rel="stylesheet">
+    <!-- 브라우저별 기본 셋팅을 0으로 리셋함 -->
+    <link href="../stylesheets/style.css" rel="stylesheet">
+
+    <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet">
+    <title><%= title %> - 전체작품</title>
+    <% include auth/favicon.ejs %>
+</head>
+<body>
+    <% include auth/nav.ejs %>
+    <% include auth/modal.ejs %>
+    <section class="content block-list">
+      <div class="check_box">
+        <h1>검색하는곳 구현할꺼</h1>
+
+        <div class="container">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="input-group">
+                        <div class="input-group-btn">
+                          <select name="search_option" class="form-control">
+                              <option value="author">작가명</option>
+                              <option value="title">작품명</option>
+
+                          </select>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actionhhhhhh <span class="caret"></span></button>
+
+                        </div><!-- /btn-group -->
+                      </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                  </div>
+
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">
+                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+      </div>
+
+      <style>
+        .check_box{
+          height: 200px;
+          border:1px solid red;
+          margin-top: 50px;
+        }
+      </style>
+
+
+        <header>
+            <h3 style="font-size: 20px; font-weight: bold;">모든 작품</h3>
+        </header>
+        <ul>
+            <% artworks.forEach(function(artwork, idx){ %>
+
+            <li class="img_li">
+                <div class="img_box">
+                    <a href="artwork/<%= artwork._id %>">
+                        <img src="images/artworks/<%= artwork.image %>" alt="Thumb<%= idx + 1 %>" class="main_image slider_img">
+                    </a>
+                </div>
+                <div class="excerpt">
+                    <a>
+                        <h3><%= artwork.title %></h3>
+                    </a>
+                    <p>
+                    <p>재료 : <%= artwork.material %>/<%= artwork.medium %></p>
+                    <p>크기 : <%= artwork.width %>X<%= artwork.height %>X<%= artwork.depth %>(cm)</p>
+                    <p>가격 : <%= artwork.price %>원</p>
+                    </p>
+                </div>
+            </li>
+
+            <% }) %>
+        </ul>
+    </section>
+
+    <% include auth/footer.ejs %>
+</body>
 </html>

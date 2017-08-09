@@ -761,8 +761,18 @@ ul, li {
 img {
     max-width: 100%;
     vertical-align: middle;
-}
 
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ftseng\/projects\/chinares\/chinares\/static\/css\/core\/_images\.sass}line{font-family:\000031}}
+.main_image {
+
+    max-height: 260px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ftseng\/projects\/chinares\/chinares\/static\/css\/core\/_images\.sass}line{font-family:\000031}}
+.detali_image {
+
+    max-height: 400px;
+}
 /*
   Font Custom - icon webfonts made simple
 */
@@ -2298,7 +2308,7 @@ article .post-content h6 {
     .block-list li {
         float: left;
         width: 23.5%;
-        margin: 0 0 0 0;
+        margin: 0 0 20px 0;
 
 
 
@@ -2428,6 +2438,7 @@ p.right {
     vertical-align: middle;
     padding-left: 10px;
     padding-right: 10px;
+  background-color: rgba(9,9,9,0.05);
 
 }
 @media (max-width:768px){

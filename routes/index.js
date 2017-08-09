@@ -13,14 +13,12 @@ router.get('/', function(req, res, next) {
                 artworks[artworks.length] = artwork[j];
             }
         }
-<<<<<<< HEAD
+
         artworks.sort(function (a, b) {
             return b.regist_date - a.regist_date;
         });
-=======
-        artworks.sort(function(a, b){ return b.regist_date - a.regist_date; });
-        /*console.log(artworks);*/
->>>>>>> 069d4a0d354adb6e939fc7d9f6501a7194b0921d
+
+
         console.log(req.session.email);
         res.render('index', { title: '36.5 Arts', nickname: users.nickname, session_email: req.session.email, artworks : artworks});
     });

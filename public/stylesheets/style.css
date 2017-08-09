@@ -2413,6 +2413,13 @@ p.right {
         word-break: break-all;
     }
 }
+@media (max-width: 767px) {
+    .detail-photo {
+        height:auto;
+    }
+}
+
+
 .img_box{
     height: 280px;
     width: 1%;
@@ -2423,3 +2430,10 @@ p.right {
     padding-right: 10px;
 
 }
+@media (max-width:768px){
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9 {
+    float: left;
+    width:100%;
+    height: auto;
+
+}}

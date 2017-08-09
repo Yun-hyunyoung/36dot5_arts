@@ -1181,7 +1181,7 @@ a, a:visited {
     -moz-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
-    color: #111;
+    color: #CC1533;
     text-decoration: none;
 }
 @media -sass-debug-info{filename{}line{font-family:\0000345}}
@@ -1208,7 +1208,7 @@ a img, a:visited img {
 }
 @media -sass-debug-info{filename{}line{font-family:\0000348}}
 a:hover, a:visited:hover {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\0000351}}
 a:hover img, a:visited:hover img {
@@ -1276,7 +1276,7 @@ nav .selected a,
 nav .selected a:visited, footer .selected,
 footer .selected a,
 footer .selected a:visited {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003113}}
 nav.primary, footer.primary {
@@ -1302,9 +1302,15 @@ nav.aux li:hover .subnav, footer.aux li:hover .subnav {
 nav.aux a, nav.aux a:visited, footer.aux a, footer.aux a:visited {
     color: #fff;
 }
+nav.primary a, nav.primary a:visited {
+    color: #000;
+}
+div#footer a, div#footer a:visited {
+    color: #000;
+}
 @media -sass-debug-info{filename{}line{font-family:\00003132}}
 nav.aux a:hover, footer.aux a:hover {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003135}}
 nav.aux .social-media, footer.aux .social-media {
@@ -1363,7 +1369,7 @@ nav.aux .social-media, footer.aux .social-media {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003182}}
 .display-image .close {
-    background: #EE2A7B;
+    background: #CC1533;
     padding: 0.25em 0.4em;
     -webkit-border-radius: 4em;
     -ms-border-radius: 4em;
@@ -1375,7 +1381,7 @@ nav.aux .social-media, footer.aux .social-media {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003189}}
 .display-image .next, .display-image .prev {
-    color: #EE2A7B;
+    color: #CC1533;
     position: absolute;
     font-size: 4em;
     padding: 0 2em;
@@ -1402,7 +1408,7 @@ nav.aux .social-media, footer.aux .social-media {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003209}}
 .card h3 {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003211}}
 .card section {
@@ -1428,7 +1434,7 @@ nav.aux .social-media, footer.aux .social-media {
 .content header h3 {
     display: inline-block;
     vertical-align: middle;
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003227}}
 .content header a.all_link {
@@ -1448,7 +1454,7 @@ nav.aux .social-media, footer.aux .social-media {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003237}}
 .content a, .content a:visited {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003239}}
 .content a:hover, .content a:visited:hover {
@@ -1513,7 +1519,7 @@ nav.aux .social-media, footer.aux .social-media {
 @media -sass-debug-info{filename{}line{font-family:\00003275}}
 .button,
 input[type="submit"] {
-    background: #EE2A7B;
+    background: #CC1533;
     border: none;
     color: #fff !important;
     cursor: pointer;
@@ -1536,7 +1542,7 @@ input[type="submit"] {
 @media -sass-debug-info{filename{}line{font-family:\00003288}}
 .button:hover,
 input[type="submit"]:hover {
-    background: #e7126a;
+    background: #FC2448;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003291}}
 .button.secondary,
@@ -1638,7 +1644,7 @@ input[type="submit"].secondary {
 
 @media -sass-debug-info{filename{}line{font-family:\00003369}}
 .banner-title {
-    background: #EE2A7B;
+    background: #CC1533;
     padding: 2em 2em 2.5em 2em;
     float: right;
     bottom: -10em;
@@ -1656,6 +1662,7 @@ input[type="submit"].secondary {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003379}}
 .banner-title p {
+
     font-size: 1em;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003382}}
@@ -1697,7 +1704,7 @@ input[type="submit"].secondary {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003408}}
 .block-list .excerpt a:hover, .block-list .excerpt a:visited:hover {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003410}}
 .block-list .excerpt p {
@@ -1741,7 +1748,7 @@ input[type="submit"].secondary {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003436}}
 .user-caption .date, .event-caption .date {
-    background: #EE2A7B;
+    background: #CC1533;
     color: #fff;
     text-align: center;
     text-transform: uppercase;
@@ -1917,7 +1924,7 @@ textarea.set {
 
 @media -sass-debug-info{filename{}line{font-family:\00003554}}
 .notice {
-    background: #EE2A7B;
+    background: #CC1533;
     color: #fff;
     text-align: center;
     padding: 2em;
@@ -2037,11 +2044,11 @@ textarea.set {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003637}}
 .management aside li.selected {
-    border-left: 8px solid #EE2A7B;
+    border-left: 8px solid #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003639}}
 .management aside li.selected a, .management aside li.selected a:visited {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003641}}
 .management form {
@@ -2181,7 +2188,7 @@ article .body {
 }
 @media -sass-debug-info{filename{}line{font-family:\00003727}}
 article .body a, article .body a:visited {
-    color: #EE2A7B;
+    color: #CC1533;
 }
 @media -sass-debug-info{filename{}line{font-family:\00003729}}
 article .post-content {

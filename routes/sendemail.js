@@ -6,11 +6,14 @@ var fs = require("fs");
 
 router.post('/sendemail', function(req, res) {
 
+  var mail_text = req.body.mail_text
+  var emailsend_id = fs.readFileSync('C:/Users/jinpy/Documents/36dot5/emailsend_id.txt',{encoding:'utf8'});
+  var emailsend_password = fs.readFileSync('C:/Users/jinpy/Documents/36dot5/emailsend_password.txt',{encoding:'utf8'});
 
   var server 	= email.server.connect({
 
-     user:   "jinpyo0311",
-     password:"Wksvy124@",
+     user:   emailsend_id,
+     password:emailsend_password,
      host:    "smtp.naver.com",
      port:    465,
      ssl:     true
@@ -29,11 +32,14 @@ router.post('/sendemail', function(req, res) {
 
 router.post('/requiremail', function(req, res) {
 
+  var emailsend_id = fs.readFileSync('C:/Users/jinpy/Documents/36dot5/emailsend_id.txt',{encoding:'utf8'});
+  var emailsend_password = fs.readFileSync('C:/Users/jinpy/Documents/36dot5/emailsend_password.txt',{encoding:'utf8'});
+
   var inquire_text = req.body.inquire_text
   var reply_email = req.body.reply_email
   var server 	= email.server.connect({
-     user:    "36dot5do",
-     password:"tkatlqdbrwja5eh",
+     user:    emailsend_id ,
+     password: emailsend_password,
      host:    "smtp.gmail.com",
      port:    465,
      ssl:     true

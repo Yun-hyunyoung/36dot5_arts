@@ -32,13 +32,13 @@
                     <div class="col-lg-6">
                       <div class="input-group">
                         <div class="input-group-btn">
+
+                          <form action="/search_artworks" method="post">
                           <select name="search_option" class="form-control">
                               <option value="author">작가명</option>
                               <option value="title">작품명</option>
-
                           </select>
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Actionhhhhhh <span class="caret"></span></button>
-
+                          <input class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
                         </div><!-- /btn-group -->
                       </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
@@ -46,10 +46,11 @@
 
                 </div>
                 <input type="hidden" name="search_param" value="all" id="search_param">
-                <input type="text" class="form-control" name="x" placeholder="Search term...">
+                <input type="text" class="form-control" name="search_text" placeholder="Search term...">
                 <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
+              </form>
             </div>
         </div>
     </div>

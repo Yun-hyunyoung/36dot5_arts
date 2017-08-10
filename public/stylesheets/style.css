@@ -765,12 +765,12 @@ img {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ftseng\/projects\/chinares\/chinares\/static\/css\/core\/_images\.sass}line{font-family:\000031}}
 .main_image {
-
+    max-width: 180px;
     max-height: 260px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/ftseng\/projects\/chinares\/chinares\/static\/css\/core\/_images\.sass}line{font-family:\000031}}
 .detali_image {
-
+    max-width: 450px;
     max-height: 400px;
 }
 /*
@@ -2439,6 +2439,17 @@ p.right {
     padding-left: 10px;
     padding-right: 10px;
   background-color: rgba(9,9,9,0.05);
+
+}
+.detail_img_box{
+    height: 280px;
+    width: 1%;
+    text-align: center;
+    display:table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-right: 10px;
+
 
 }
 @media (max-width:768px){

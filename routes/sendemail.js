@@ -9,8 +9,8 @@ router.post('/sendemail', function(req, res) {
   var mail_text = req.body.mail_text
 
   var server 	= email.server.connect({
-     user:    "jinpyo0311",
-     password:"Wksvy124@",
+     user:    "mail_id",
+     password:"mail_passwd",
      host:    "smtp.naver.com",
      port:    465,
      ssl:     true
